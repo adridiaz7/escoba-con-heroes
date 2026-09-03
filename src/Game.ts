@@ -29,66 +29,83 @@ export class Game {
         this.cpuPlayer.receiveCards(this.deck.dealCards(3))
     }
 
-    playerPlaysCard(cardId: string, selectedCardIds: string[]): void {
-         if (!this.isPlayerTurn || this.isGameOver) {
-    return;
-    }
-        const playedCard = this.player.playCard(cardId);
+    playerPlaysCard(cardId: string, selectedCardIds: string[]): boolean {
+            if (!this.isPlayerTurn || this.isGameOver) {
+            return false;
+            }
+
+            const playedCard = this.player.playCard(cardId);
 
         if (!playedCard) {
-        return;
-        }
+            return false;
+            }
 
-    const selectedCards = selectedCardIds
-        .map((id) => this.table.findCardById(id))
-        .filter((card): card is Card => card !== undefined);
+        const selectedCards = selectedCardIds
+            .map((id) => this.table.findCardById(id))
+            .filter((card): card is Card => card !== undefined);
 
-    let selectedCardsSum = 0;
+        let selectedCardsSum = 0;
 
-    selectedCards.forEach((card) => {
-        selectedCardsSum += card.getFigureValue();
-    });
+        selectedCards.forEach((card) => {
+            selectedCardsSum += card.getFigureValue();
+            });
 
-    if (selectedCards.length > 0) {
-        const totalSum = selectedCardsSum + playedCard.getFigureValue();
+        if (selectedCards.length > 0) {
+            const totalSum = selectedCardsSum + playedCard.getFigureValue();
 
-        if (totalSum !== 15) {
-        this.player.receiveCards([playedCard]);
-        return;
-        }
+            if (totalSum !== 15) {
+            this.player.receiveCards([playedCard]);
+            return false;
+            }
 
-        this.table.removeCards(selectedCards);
-        const isScopa = this.table.isTableEmpty();
-        this.player.winCards([...selectedCards, playedCard], isScopa);
-    } else {
-        this.table.addCardsOnTable(playedCard);
-    }
+            this.table.removeCards(selectedCards);
+            const isScopa = this.table.isTableEmpty();
+            this.player.winCards([...selectedCards, playedCard], isScopa);
+            } else {
+            this.table.addCardsOnTable(playedCard);
+            }
 
-    this.isPlayerTurn = false;
-    }
+            this.isPlayerTurn = false;
+            return true;
+     }
 
     cpuPlaysTurn(): void {
-     if (this.isPlayerTurn || this.isGameOver) {
-    return;
-    }
-
-    const { card, combination } = this.cpuPlayer.chooseMove(this.table);
-    const playedCard = this.cpuPlayer.playCard(card.getCardId());
-
-    if (!playedCard) {
+        if (this.isPlayerTurn || this.isGameOver) {
         return;
+        }
+
+        const { card, combination } = this.cpuPlayer.chooseMove(this.table);
+        const playedCard = this.cpuPlayer.playCard(card.getCardId());
+
+        if (!playedCard) {
+            return;
+        }
+
+        if (combination.length > 0) {
+            this.table.removeCards(combination);
+            const isScopa = this.table.isTableEmpty();
+            this.cpuPlayer.winCards([...combination, playedCard], isScopa);
+        } else {
+            this.table.addCardsOnTable(playedCard);
+        }
+
+        this.isPlayerTurn = true;
     }
 
-    if (combination.length > 0) {
-        this.table.removeCards(combination);
-        const isScopa = this.table.isTableEmpty();
-        this.cpuPlayer.winCards([...combination, playedCard], isScopa);
-    } else {
-        this.table.addCardsOnTable(playedCard);
+    checkRoundEnd(): void {
+        const bothHandsEmpty =!this.player.hasCardsInHand() && !this.cpuPlayer.hasCardsInHand()
+
+        if (!bothHandsEmpty)
+            return;
+        if (this.deck.getRemainingCards() > 0){
+            this.player.receiveCards(this.deck.dealCards(3))
+            this.cpuPlayer.receiveCards(this.deck.dealCards(3))
+        }
+        else{
+            this.isGameOver = true;
+        }
+
     }
 
-    this.isPlayerTurn = true;
 
-    }
-
-    }
+}
