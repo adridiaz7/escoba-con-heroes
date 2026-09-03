@@ -107,5 +107,31 @@ export class Game {
 
     }
 
+    calculateFinalScore(): void {
+        this.player.addScore(this.player.getScopas())
+        this.cpuPlayer.addScore(this.cpuPlayer.getScopas())
+
+        const playerCardCount = this.player.getWonCards().length;
+        const cpuCardCount = this.cpuPlayer.getWonCards().length;
+
+        if (playerCardCount > cpuCardCount){
+            this.player.addScore(1)
+        }
+        else if (cpuCardCount > playerCardCount){
+            this.cpuPlayer.addScore(1)
+        }
+
+        const playerGoldCount = this.player.getWonCardsBySuit("oros")
+        const cpuGoldCount = this.cpuPlayer.getWonCardsBySuit("oros")
+
+        if (playerGoldCount >cpuGoldCount){
+            this.player.addScore(1)
+        }
+        else if (cpuGoldCount > playerGoldCount){
+            this.cpuPlayer.addScore(1)
+        }
+
+    }
+
 
 }

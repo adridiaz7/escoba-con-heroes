@@ -1,4 +1,4 @@
-import { Card } from "./Card.js";
+import { Card, Suit } from "./Card.js";
 
 export class Player{
     name: string
@@ -43,6 +43,10 @@ export class Player{
         this.#score +=points
     }
 
+    getWonCardsBySuit(suit: Suit): number {
+        return this.#wonCards.filter((card) => card.suit === suit).length;
+    }
+
     getScore():number{
         return this.#score
     }
@@ -51,10 +55,10 @@ export class Player{
         return this.#wonCards
     }
 
-    getScopa():number{
+    getScopas():number{
         return this.#scopas
     }
-    
+
     hasCardsInHand(): boolean {
         return this.#hand.length > 0;
     }
