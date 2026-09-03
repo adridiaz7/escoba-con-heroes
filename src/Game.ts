@@ -33,11 +33,11 @@ export class Game {
          if (!this.isPlayerTurn || this.isGameOver) {
     return;
     }
-    const playedCard = this.player.playCard(cardId);
+        const playedCard = this.player.playCard(cardId);
 
-    if (!playedCard) {
+        if (!playedCard) {
         return;
-    }
+        }
 
     const selectedCards = selectedCardIds
         .map((id) => this.table.findCardById(id))
@@ -67,5 +67,28 @@ export class Game {
     this.isPlayerTurn = false;
     }
 
-    
-}
+    cpuPlaysTurn(): void {
+     if (this.isPlayerTurn || this.isGameOver) {
+    return;
+    }
+
+    const { card, combination } = this.cpuPlayer.chooseMove(this.table);
+    const playedCard = this.cpuPlayer.playCard(card.getCardId());
+
+    if (!playedCard) {
+        return;
+    }
+
+    if (combination.length > 0) {
+        this.table.removeCards(combination);
+        const isScopa = this.table.isTableEmpty();
+        this.cpuPlayer.winCards([...combination, playedCard], isScopa);
+    } else {
+        this.table.addCardsOnTable(playedCard);
+    }
+
+    this.isPlayerTurn = true;
+
+    }
+
+    }
