@@ -30,6 +30,9 @@ export class Game {
     }
 
     playerPlaysCard(cardId: string, selectedCardIds: string[]): void {
+         if (!this.isPlayerTurn || this.isGameOver) {
+    return;
+    }
     const playedCard = this.player.playCard(cardId);
 
     if (!playedCard) {
