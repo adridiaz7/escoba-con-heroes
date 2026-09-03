@@ -20,6 +20,3 @@ export type Suit = "oros" | "copas" | "bastos" | "espadas"
         return(`${this.value}-${this.suit}`)
     }
 }
-const carta = new Card("copas", 12)
-
-console.log(carta.getFigureValue())
