@@ -39,6 +39,22 @@ export class Player{
         }
     }
 
+    addScore(points:number): void{
+        this.#score +=points
+    }
+
+    getScore():number{
+        return this.#score
+    }
+
+    getWonCards():Card[]{
+        return this.#wonCards
+    }
+
+    getScopa():number{
+        return this.#scopas
+    }
+    
     hasCardsInHand(): boolean {
         return this.#hand.length > 0;
     }
