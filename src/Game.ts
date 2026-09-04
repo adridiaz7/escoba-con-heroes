@@ -89,6 +89,7 @@ export class Game {
             this.table.addCardsOnTable(playedCard);
         }
 
+        this.checkRoundEnd();
         this.isPlayerTurn = true;
     }
 
@@ -103,6 +104,7 @@ export class Game {
         }
         else{
             this.isGameOver = true;
+            this.calculateFinalScore();
         }
 
     }
