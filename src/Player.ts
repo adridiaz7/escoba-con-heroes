@@ -59,6 +59,10 @@ export class Player{
         return this.#scopas
     }
 
+    hasSevenOfGold():boolean {
+        return this.#wonCards.some((card)=> card.suit ==="oros" && card.value === 7);
+    }
+
     hasCardsInHand(): boolean {
         return this.#hand.length > 0;
     }
