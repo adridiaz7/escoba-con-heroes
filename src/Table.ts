@@ -51,5 +51,8 @@ export class Table {
 
         return validCombinations;
     }
-
+    
+    getCardsOnTable(): Card[]{
+        return this.#cardsOnTable;
+    }
 }
