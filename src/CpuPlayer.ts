@@ -8,7 +8,6 @@ export class CpuPlayer extends Player {
     super("CPU");
   }
 
-  
   chooseMove(table: Table): { card: Card; combination: Card[] } {
     let bestMove: { card: Card; combination: Card[] } | null = null;
 
