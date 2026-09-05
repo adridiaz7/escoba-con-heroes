@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f0e8;
+    color: #222;
+}
+
+header {
+    text-align: center;
+    padding: 24px;
+    background: #1f3b2d;
+    color: white;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 24px auto;
+}
+
+.panel {
+    background: white;
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+.hero-list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    flex: 1;
+    min-width: 220px;
+    padding: 16px;
+    border: 2px solid #1f3b2d;
+    border-radius: 10px;
+    background: #fffdf8;
+    cursor: pointer;
+    text-align: left;
+}
+
+.hero-card:hover {
+    background: #e9f3ed;
+}
+
+.score-board {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-weight: bold;
+}
+
+.game-zone {
+    margin-top: 24px;
+}
+
+.cards-area {
+    min-height: 120px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.card {
+    width: 80px;
+    height: 110px;
+    border: 2px solid #222;
+    border-radius: 8px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card.selected {
+    background: #ffe8a3;
+    border-color: #d29200;
+}
+
+.card.cpu-card {
+    background: #333;
+    color: white;
+}
+
+.actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #1f3b2d;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2f5a44;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 12px;
+    background: #eef5ff;
+    border-left: 4px solid #2c6fb7;
+}

@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./dist/Game.js" type ="module" async></script>
-    <title>Escoba con heroes </title>
+    <title>Escoba con héroes</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./dist/index.js" type="module" defer></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Escoba con héroes</h1>
+        <p>Juego de escoba simplificada contra la CPU con habilidades especiales.</p>
+    </header>
+
+    <main>
+        <section id="heroSelection" class="panel">
+            <h2>Elige tu héroe</h2>
+
+            <div class="hero-list">
+                <button class="hero-card" data-hero="cambiacartas">
+                    <h3>Cambiacartas</h3>
+                    <p>Una vez por partida puede cambiar una carta de su mano.</p>
+                </button>
+
+                <button class="hero-card" data-hero="recolectora">
+                    <h3>Recolectora</h3>
+                    <p>Si captura 3 o más cartas en una jugada, suma 1 punto extra.</p>
+                </button>
+
+                <button class="hero-card" data-hero="coleccionista">
+                    <h3>Coleccionista</h3>
+                    <p>Si al final tiene 6 o más figuras, suma 2 puntos extra.</p>
+                </button>
+            </div>
+        </section>
+
+        <section id="gameBoard" class="panel">
+            <div class="score-board">
+                <p>Jugador: <span id="playerScore">0</span></p>
+                <p>CPU: <span id="cpuScore">0</span></p>
+                <p>Turno: <span id="turnInfo">Jugador</span></p>
+            </div>
+
+            <section class="game-zone">
+                <h2>Mesa</h2>
+                <div id="tableCards" class="cards-area"></div>
+            </section>
+
+            <section class="game-zone">
+                <h2>Tu mano</h2>
+                <div id="playerHand" class="cards-area"></div>
+            </section>
+
+            <section class="game-zone">
+                <h2>CPU</h2>
+                <div id="cpuHand" class="cards-area"></div>
+            </section>
+
+            <div class="actions">
+                <button id="playButton">Jugar carta</button>
+                <button id="heroButton">Usar habilidad</button>
+                <button id="restartButton">Reiniciar partida</button>
+            </div>
+
+            <p id="messageBox" class="message">Selecciona un héroe para empezar.</p>
+        </section>
+    </main>
 </body>
 </html>
