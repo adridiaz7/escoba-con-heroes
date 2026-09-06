@@ -65,6 +65,18 @@ export class DomController {
     return cardElement;
   }
 
+  private toggleTableCardSelection(cardElement: HTMLElement): void {
+  const isAlreadySelected = this.selectedTableCardIds.includes(cardElement.id);
+
+  if (isAlreadySelected) {
+    this.selectedTableCardIds = this.selectedTableCardIds.filter((id) => id !== cardElement.id);
+  } else {
+    this.selectedTableCardIds.push(cardElement.id);
+  }
+
+  cardElement.classList.toggle("selected");
+}
+
   renderHand(cards: Card[]): void {
     if (!this.playerHandElement) return;
 
@@ -86,18 +98,25 @@ export class DomController {
       this.cpuHandElement!.appendChild(cardElement);
     });
   }
+renderTable(cards: Card[]): void {
+  if (!this.tableElement) return;
 
-  renderTable(cards: Card[]): void {
-    if (!this.tableElement) return;
+  this.tableElement.innerHTML = "";
 
-    this.tableElement.innerHTML = "";
+  cards.forEach((card) => {
+    const cardElement = this.createCardElement(card, true, false);
 
-    cards.forEach((card) => {
-      const cardElement = this.createCardElement(card, true, false);
-      this.tableElement!.appendChild(cardElement)
-   });
+    if (this.selectedTableCardIds.includes(card.getCardId())) {
+      cardElement.classList.add("selected");
+    }
+
+    cardElement.addEventListener("click", () => {
+      this.toggleTableCardSelection(cardElement);
+    });
+
+    this.tableElement!.appendChild(cardElement);
+  });
 }
-  // renderCpuHand — pendiente, te toca a ti
-  // renderTable + selección por click — pendiente
+  // selección por click — pendiente
   // setupTableDropZone (drag & drop en la mesa) — pendiente
 }
