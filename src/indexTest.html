@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Escoba - Prueba de pintado</title>
+   <script  src="./dist/index.js " type="module" async></script>
+  <link rel="stylesheet" href="/public/styles/styleTest.css" />
+</head>
+<body>
+  <h1>Escoba (prueba)</h1>
+
+  <div class="scoreboard">
+    <p>Jugador: <span id="playerScore">0</span></p>
+    <p>CPU: <span id="cpuScore">0</span></p>
+    <p>Turno: <span id="turnInfo">Jugador</span></p>
+  </div>
+
+  <!-- Zona CPU -->
+  <section class="zone cpu-zone">
+    <div class="pile" id="cpuPile">
+      <span class="pile-count" id="cpuPileCount">0</span>
+    </div>
+    <div class="hand" id="cpuHand"></div>
+  </section>
+
+  <!-- Zona mesa -->
+  <section class="zone table-zone">
+    <div class="pile deck" id="deck">
+      <span class="pile-count" id="deckCount">40</span>
+    </div>
+    <div class="drop-area" id="tableCards"></div>
+  </section>
+
+  <!-- Zona jugador -->
+  <section class="zone player-zone">
+    <div class="pile" id="playerPile">
+      <span class="pile-count" id="playerPileCount">0</span>
+    </div>
+    <div class="hand" id="playerHand"></div>
+  </section>
+
+  <p id="messageBox" class="message"></p>
+
+ 
+</body>
+</html>

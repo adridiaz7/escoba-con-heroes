@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0b6e4f; /* verde tapete, contrasta bien con cartas blancas */
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 12px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 140px;
+}
+
+.hand {
+  display: flex;
+  gap: 8px;
+  min-height: 110px;
+  align-items: center;
+}
+
+/* La zona de mesa es más grande, tal como pediste */
+.table-zone {
+  min-height: 220px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
+.drop-area {
+  flex: 1;
+  min-height: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Montoncitos: mazo y cartas capturadas, con volumen simulado */
+.pile {
+  position: relative;
+  width: 70px;
+  height: 105px;
+}
+
+.pile::before,
+.pile::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 105px;
+  background: #1b3a6b;
+  border: 2px solid #0d1f3c;
+  border-radius: 8px;
+}
+
+.pile::before {
+  top: 4px;
+  left: 4px;
+  z-index: 0;
+}
+
+.pile::after {
+  top: 2px;
+  left: 2px;
+  z-index: 1;
+}
+
+.pile-count {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  background: #ffe066;
+  color: #333;
+  font-weight: bold;
+  font-size: 13px;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.card {
+  width: 70px;
+  height: 105px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.message {
+  min-height: 20px;
+  font-size: 16px;
+}

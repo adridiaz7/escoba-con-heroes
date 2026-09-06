@@ -2,7 +2,9 @@ import { Game } from "./Game.js";
 import { DomController } from "./DomController.js";
 
 const game = new Game();
-const domController = new DomController();
+const domController = new DomController((cardId, selectedIds) => {
+  console.log("Carta jugada:", cardId, "seleccionadas:", selectedIds);
+});
 
 domController.showMessage("Partida creada. Selecciona una carta para empezar a jugar.");
 domController.updateTurn("Jugador");

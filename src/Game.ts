@@ -33,7 +33,7 @@ export class Game {
     playerPlaysCard(cardId: string, selectedCardIds: string[]): boolean {
             if (!this.isPlayerTurn || this.isGameOver) {
 
-            this.lastError ="Esa carta no está en tu mano";
+            this.lastError ="No es tu turno";
             return false;
             }
 
@@ -41,7 +41,7 @@ export class Game {
 
         if (!playedCard) {
         
-            this.lastError ="No es tu turno";
+            this.lastError ="Esta carta no está en tu mano";
             return false;
             }
 
@@ -60,7 +60,7 @@ export class Game {
 
             if (totalSum !== 15) {
             this.player.receiveCards([playedCard]);
-            this.lastError = "Esa combinación suma ${totalSum}, no 15.";
+            this.lastError = `Esa combinación suma ${totalSum}, no 15.`;
             return false;
             }
 
