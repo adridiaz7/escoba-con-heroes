@@ -12,6 +12,7 @@ export class Game {
     cpuPlayer: CpuPlayer;
     isPlayerTurn: boolean = true;
     isGameOver: boolean = false;
+    lastError: string | null = null;
 
     constructor () {
         this.deck = new Deck ();
@@ -31,12 +32,16 @@ export class Game {
 
     playerPlaysCard(cardId: string, selectedCardIds: string[]): boolean {
             if (!this.isPlayerTurn || this.isGameOver) {
+
+            this.lastError ="Esa carta no está en tu mano";
             return false;
             }
 
             const playedCard = this.player.playCard(cardId);
 
         if (!playedCard) {
+        
+            this.lastError ="No es tu turno";
             return false;
             }
 
@@ -55,6 +60,7 @@ export class Game {
 
             if (totalSum !== 15) {
             this.player.receiveCards([playedCard]);
+            this.lastError = "Esa combinación suma ${totalSum}, no 15.";
             return false;
             }
 
@@ -66,6 +72,7 @@ export class Game {
             }
 
             this.isPlayerTurn = false;
+            this.lastError = null;
             return true;
      }
 
