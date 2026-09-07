@@ -1,5 +1,3 @@
-
-
 import { Card } from "./Card.js";
 
 export class DomController {
@@ -12,7 +10,6 @@ export class DomController {
   private tableElement: HTMLElement | null;
   private selectedTableCardIds: string[] = [];
   private onCardPlayed: (cardId: string, selectedIds: string[]) => void;
-
   private deckCountElement: HTMLElement | null;
   private playerPileCountElement: HTMLElement | null;
   private cpuPileCountElement: HTMLElement | null;
@@ -63,11 +60,11 @@ export class DomController {
     image.src = faceUp ? `img/${card.getCardId()}.png` : "img/back.png";
 
     image.onerror = () => {
-    image.style.display = "none";
-    cardElement.textContent = faceUp ? card.getCardId() : "🂠";
-  };
-    cardElement.appendChild(image);
+      image.style.display = "none";
+      cardElement.textContent = faceUp ? card.getCardId() : "🂠";
+    };
 
+    cardElement.appendChild(image);
 
     if (draggable) {
       cardElement.setAttribute("draggable", "true");
@@ -80,15 +77,15 @@ export class DomController {
   }
 
   private toggleTableCardSelection(cardElement: HTMLElement): void {
-  const isAlreadySelected = this.selectedTableCardIds.includes(cardElement.id);
+    const isAlreadySelected = this.selectedTableCardIds.includes(cardElement.id);
 
-  if (isAlreadySelected) {
-    this.selectedTableCardIds = this.selectedTableCardIds.filter((id) => id !== cardElement.id);
-  } else {
-    this.selectedTableCardIds.push(cardElement.id);
-  }
+    if (isAlreadySelected) {
+      this.selectedTableCardIds = this.selectedTableCardIds.filter((id) => id !== cardElement.id);
+    } else {
+      this.selectedTableCardIds.push(cardElement.id);
+    }
 
-  cardElement.classList.toggle("selected");
+    cardElement.classList.toggle("selected");
   }
 
   renderHand(cards: Card[]): void {
@@ -102,12 +99,12 @@ export class DomController {
     });
   }
 
-  renderCpuHand (cards: Card[]): void {
+  renderCpuHand(cards: Card[]): void {
     if (!this.cpuHandElement) return;
 
     this.cpuHandElement.innerHTML = "";
 
-   cards.forEach((card) => {
+    cards.forEach((card) => {
       const cardElement = this.createCardElement(card, false, false);
       this.cpuHandElement!.appendChild(cardElement);
     });
@@ -131,47 +128,46 @@ export class DomController {
 
       this.tableElement!.appendChild(cardElement);
     });
-}
+  }
 
   private setupTableDropZone(): void {
-  if (!this.tableElement) return;
+    if (!this.tableElement) return;
 
-  this.tableElement.addEventListener("dragover", (event) => {
-    event.preventDefault();
-    this.tableElement!.classList.add("drag-over");
-  });
+    this.tableElement.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      this.tableElement!.classList.add("drag-over");
+    });
 
-  this.tableElement.addEventListener("dragleave", () => {
-    this.tableElement!.classList.remove("drag-over");
-  });
+    this.tableElement.addEventListener("dragleave", () => {
+      this.tableElement!.classList.remove("drag-over");
+    });
 
-  this.tableElement.addEventListener("drop", (event) => {
-    event.preventDefault();
-    this.tableElement!.classList.remove("drag-over");
+    this.tableElement.addEventListener("drop", (event) => {
+      event.preventDefault();
+      this.tableElement!.classList.remove("drag-over");
 
-    const cardId = event.dataTransfer?.getData("text/plain");
-    if (!cardId) return;
+      const cardId = event.dataTransfer?.getData("text/plain");
+      if (!cardId) return;
 
-    const idsToPlay = [...this.selectedTableCardIds];
-    this.selectedTableCardIds = [];
+      const idsToPlay = [...this.selectedTableCardIds];
+      this.selectedTableCardIds = [];
 
-    this.onCardPlayed(cardId, idsToPlay);
-  });
-}
+      this.onCardPlayed(cardId, idsToPlay);
+    });
+  }
 
   updateDeckCount(count: number): void {
-  if (this.deckCountElement) {
-    this.deckCountElement.textContent = count.toString();
+    if (this.deckCountElement) {
+      this.deckCountElement.textContent = count.toString();
+    }
   }
-}
 
-updatePileCounts(playerCount: number, cpuCount: number): void {
-  if (this.playerPileCountElement) {
-    this.playerPileCountElement.textContent = playerCount.toString();
+  updatePileCounts(playerCount: number, cpuCount: number): void {
+    if (this.playerPileCountElement) {
+      this.playerPileCountElement.textContent = playerCount.toString();
+    }
+    if (this.cpuPileCountElement) {
+      this.cpuPileCountElement.textContent = cpuCount.toString();
+    }
   }
-  if (this.cpuPileCountElement) {
-    this.cpuPileCountElement.textContent = cpuCount.toString();
-  }
-}
-
 }
