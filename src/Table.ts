@@ -53,6 +53,6 @@ export class Table {
     }
     
     getCardsOnTable(): Card[]{
-        return this.#cardsOnTable;
+        return [...this.#cardsOnTable];
     }
 }

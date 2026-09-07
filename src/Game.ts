@@ -112,20 +112,17 @@ export class Game {
         if (this.deck.getRemainingCards() > 0){
             this.player.receiveCards(this.deck.dealCards(3))
             this.cpuPlayer.receiveCards(this.deck.dealCards(3))
-            
-    }
-           else{
+        }
+        else{
             const remainingCards = this.table.getCardsOnTable();
 
             if (remainingCards.length > 0 && this.lastCapturingPlayer) {
                 this.table.removeCards(remainingCards);
                 this.lastCapturingPlayer.winCards(remainingCards, false);
             }
-
             this.isGameOver = true;
             this.calculateFinalScore();
-            }
-
+        }
     }
 
     calculateFinalScore(): void {
