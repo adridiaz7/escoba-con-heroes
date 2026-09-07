@@ -57,7 +57,7 @@ export class DomController {
     cardElement.id = card.getCardId();
 
     const image = document.createElement("img");
-    image.src = faceUp ? `img/${card.getCardId()}.png` : "img/back.png";
+    image.src = faceUp ? `public/img/${card.getCardId()}.svg` : "public/img/back.svg";
 
     image.onerror = () => {
       image.style.display = "none";
