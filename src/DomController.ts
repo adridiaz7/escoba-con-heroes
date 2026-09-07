@@ -23,6 +23,7 @@ export class DomController {
     this.tableElement = document.querySelector("#tableCards");
 
     this.onCardPlayed = onCardPlayed;
+    this.setupTableDropZone();
   }
 
   showMessage(message: string): void {
@@ -75,7 +76,7 @@ export class DomController {
   }
 
   cardElement.classList.toggle("selected");
-}
+  }
 
   renderHand(cards: Card[]): void {
     if (!this.playerHandElement) return;
@@ -98,25 +99,52 @@ export class DomController {
       this.cpuHandElement!.appendChild(cardElement);
     });
   }
-renderTable(cards: Card[]): void {
+
+  renderTable(cards: Card[]): void {
+    if (!this.tableElement) return;
+
+    this.tableElement.innerHTML = "";
+
+    cards.forEach((card) => {
+      const cardElement = this.createCardElement(card, true, false);
+
+      if (this.selectedTableCardIds.includes(card.getCardId())) {
+        cardElement.classList.add("selected");
+      }
+
+      cardElement.addEventListener("click", () => {
+        this.toggleTableCardSelection(cardElement);
+      });
+
+      this.tableElement!.appendChild(cardElement);
+    });
+  }
+
+  private setupTableDropZone(): void {
   if (!this.tableElement) return;
 
-  this.tableElement.innerHTML = "";
+  this.tableElement.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    this.tableElement!.classList.add("drag-over");
+  });
 
-  cards.forEach((card) => {
-    const cardElement = this.createCardElement(card, true, false);
+  this.tableElement.addEventListener("dragleave", () => {
+    this.tableElement!.classList.remove("drag-over");
+  });
 
-    if (this.selectedTableCardIds.includes(card.getCardId())) {
-      cardElement.classList.add("selected");
+  this.tableElement.addEventListener("drop", (event) => {
+    event.preventDefault();
+    this.tableElement!.classList.remove("drag-over");
+
+    const cardId = event.dataTransfer?.getData("text/plain");
+
+    if (!cardId) {
+      return;
     }
 
-    cardElement.addEventListener("click", () => {
-      this.toggleTableCardSelection(cardElement);
-    });
-
-    this.tableElement!.appendChild(cardElement);
+    this.onCardPlayed(cardId, this.selectedTableCardIds);
+    this.selectedTableCardIds = [];
   });
-}
-  // selección por click — pendiente
-  // setupTableDropZone (drag & drop en la mesa) — pendiente
+  }
+
 }
