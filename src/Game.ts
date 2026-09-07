@@ -13,6 +13,7 @@ export class Game {
     isPlayerTurn: boolean = true;
     isGameOver: boolean = false;
     lastError: string | null = null;
+    lastCapturingPlayer: Player | null = null;
 
     constructor () {
         this.deck = new Deck ();
@@ -67,6 +68,8 @@ export class Game {
             this.table.removeCards(selectedCards);
             const isScopa = this.table.isTableEmpty();
             this.player.winCards([...selectedCards, playedCard], isScopa);
+            this.lastCapturingPlayer = this.player;
+            
             } else {
             this.table.addCardsOnTable(playedCard);
             }
@@ -92,6 +95,7 @@ export class Game {
             this.table.removeCards(combination);
             const isScopa = this.table.isTableEmpty();
             this.cpuPlayer.winCards([...combination, playedCard], isScopa);
+            this.lastCapturingPlayer = this.cpuPlayer;
         } else {
             this.table.addCardsOnTable(playedCard);
         }
@@ -108,11 +112,19 @@ export class Game {
         if (this.deck.getRemainingCards() > 0){
             this.player.receiveCards(this.deck.dealCards(3))
             this.cpuPlayer.receiveCards(this.deck.dealCards(3))
-        }
-        else{
+            
+    }
+           else{
+            const remainingCards = this.table.getCardsOnTable();
+
+            if (remainingCards.length > 0 && this.lastCapturingPlayer) {
+                this.table.removeCards(remainingCards);
+                this.lastCapturingPlayer.winCards(remainingCards, false);
+            }
+
             this.isGameOver = true;
             this.calculateFinalScore();
-        }
+            }
 
     }
 
