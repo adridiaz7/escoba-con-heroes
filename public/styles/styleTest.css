@@ -117,3 +117,14 @@ body {
   min-height: 20px;
   font-size: 16px;
 }
+
+.card.selected {
+  outline: 3px solid #ffe066;
+  outline-offset: -2px;
+  transform: translateY(-8px);
+}
+
+.drop-area.drag-over {
+  outline: 3px dashed orange;
+  background: rgba(255, 165, 0, 0.1);
+}
