@@ -9,6 +9,9 @@ const domController = new DomController((cardId, selectedIds) => {
   if (!success) {
     domController.showMessage(game.lastError ?? "Jugada no válida.");
   }
+  else{
+    domController.showMessage("")
+  }
 
   renderScreen();
 

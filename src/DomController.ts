@@ -150,13 +150,12 @@ export class DomController {
     this.tableElement!.classList.remove("drag-over");
 
     const cardId = event.dataTransfer?.getData("text/plain");
+    if (!cardId) return;
 
-    if (!cardId) {
-      return;
-    }
-
-    this.onCardPlayed(cardId, this.selectedTableCardIds);
+    const idsToPlay = [...this.selectedTableCardIds];
     this.selectedTableCardIds = [];
+
+    this.onCardPlayed(cardId, idsToPlay);
   });
 }
 
