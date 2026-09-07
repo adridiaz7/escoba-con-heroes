@@ -26,6 +26,8 @@ const renderScreen = (): void => {
   domController.renderTable(game.table.getCardsOnTable());
   domController.updateScores(game.player.getScore(), game.cpuPlayer.getScore());
   domController.updateTurn(game.isPlayerTurn ? "Jugador" : "CPU");
+  domController.updateDeckCount(game.deck.getRemainingCards());
+  domController.updatePileCounts(game.player.getWonCards().length, game.cpuPlayer.getWonCards().length);
 };
 
 renderScreen();

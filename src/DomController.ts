@@ -13,6 +13,10 @@ export class DomController {
   private selectedTableCardIds: string[] = [];
   private onCardPlayed: (cardId: string, selectedIds: string[]) => void;
 
+  private deckCountElement: HTMLElement | null;
+  private playerPileCountElement: HTMLElement | null;
+  private cpuPileCountElement: HTMLElement | null;
+
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
     this.messageBox = document.querySelector("#messageBox");
     this.turnInfo = document.querySelector("#turnInfo");
@@ -21,6 +25,9 @@ export class DomController {
     this.playerHandElement = document.querySelector("#playerHand");
     this.cpuHandElement = document.querySelector("#cpuHand");
     this.tableElement = document.querySelector("#tableCards");
+    this.deckCountElement = document.querySelector("#deckCount");
+    this.playerPileCountElement = document.querySelector("#playerPileCount");
+    this.cpuPileCountElement = document.querySelector("#cpuPileCount");
 
     this.onCardPlayed = onCardPlayed;
     this.setupTableDropZone();
@@ -54,7 +61,13 @@ export class DomController {
 
     const image = document.createElement("img");
     image.src = faceUp ? `img/${card.getCardId()}.png` : "img/back.png";
+
+    image.onerror = () => {
+    image.style.display = "none";
+    cardElement.textContent = faceUp ? card.getCardId() : "🂠";
+  };
     cardElement.appendChild(image);
+
 
     if (draggable) {
       cardElement.setAttribute("draggable", "true");
@@ -118,7 +131,7 @@ export class DomController {
 
       this.tableElement!.appendChild(cardElement);
     });
-  }
+}
 
   private setupTableDropZone(): void {
   if (!this.tableElement) return;
@@ -145,6 +158,21 @@ export class DomController {
     this.onCardPlayed(cardId, this.selectedTableCardIds);
     this.selectedTableCardIds = [];
   });
+}
+
+  updateDeckCount(count: number): void {
+  if (this.deckCountElement) {
+    this.deckCountElement.textContent = count.toString();
   }
+}
+
+updatePileCounts(playerCount: number, cpuCount: number): void {
+  if (this.playerPileCountElement) {
+    this.playerPileCountElement.textContent = playerCount.toString();
+  }
+  if (this.cpuPileCountElement) {
+    this.cpuPileCountElement.textContent = cpuCount.toString();
+  }
+}
 
 }
