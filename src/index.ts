@@ -1,14 +1,31 @@
 import { Game } from "./Game.js";
 import { DomController } from "./DomController.js";
 
-const game = new Game();
+let game = new Game();
+
 const domController = new DomController((cardId, selectedIds) => {
-  console.log("Carta jugada:", cardId, "seleccionadas:", selectedIds);
+  const success = game.playerPlaysCard(cardId, selectedIds);
+
+  if (!success) {
+    domController.showMessage(game.lastError ?? "Jugada no válida.");
+  }
+
+  renderScreen();
+
+  if (success) {
+    window.setTimeout(() => {
+      game.cpuPlaysTurn();
+      renderScreen();
+    }, 1200);
+  }
 });
 
-domController.showMessage("Partida creada. Selecciona una carta para empezar a jugar.");
-domController.updateTurn("Jugador");
-domController.updateScores(0, 0);
+const renderScreen = (): void => {
+  domController.renderHand(game.player.getHand());
+  domController.renderCpuHand(game.cpuPlayer.getHand());
+  domController.renderTable(game.table.getCardsOnTable());
+  domController.updateScores(game.player.getScore(), game.cpuPlayer.getScore());
+  domController.updateTurn(game.isPlayerTurn ? "Jugador" : "CPU");
+};
 
-console.log("Escoba con héroes iniciada");
-console.log(game);
+renderScreen();
