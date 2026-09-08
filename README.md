@@ -35,3 +35,12 @@ La diferencia principal es que cada jugador puede tener un héroe con una habili
 - No se usarán frameworks como React, Angular o Vue.
 - No habrá juego online.
 - La CPU tendrá una lógica sencilla y explicable.
+
+## Cómo ejecutar el proyecto
+
+Para probar el proyecto en local hay que seguir estos pasos:
+
+1. Instalar las dependencias:
+
+```bash
+npm install
