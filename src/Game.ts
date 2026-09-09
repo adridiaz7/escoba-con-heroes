@@ -3,6 +3,8 @@ import { Table } from "./Table.js";
 import { Player } from "./Player.js";
 import { CpuPlayer } from "./CpuPlayer.js";
 import { Card } from "./Card.js";
+import { CollectorHero } from "./CollectorHero.js";
+import { ScopaHero } from "./ScopaHero.js";
 
 export class Game {
 
@@ -29,6 +31,9 @@ export class Game {
 
         this.player.receiveCards(this.deck.dealCards(3))
         this.cpuPlayer.receiveCards(this.deck.dealCards(3))
+        this.player.setHero(new ScopaHero()); // temporal
+
+        
     }
 
     playerPlaysCard(cardId: string, selectedCardIds: string[]): boolean {
@@ -106,7 +111,7 @@ export class Game {
             if (isScopa) {
             this.cpuPlayer.hero?.onScopa(this.cpuPlayer);
             }
-            
+
         } else {
             this.table.addCardsOnTable(playedCard);
         }
