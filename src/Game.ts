@@ -70,7 +70,10 @@ export class Game {
             this.player.winCards([...selectedCards, playedCard], isScopa);
             this.lastCapturingPlayer = this.player;
             this.player.hero?.onCardCaptured(selectedCards.length + 1, this.player);
-            
+
+            if (isScopa) {
+            this.player.hero?.onScopa(this.player);
+            }
             
             } else {
             this.table.addCardsOnTable(playedCard);
@@ -99,6 +102,11 @@ export class Game {
             this.cpuPlayer.winCards([...combination, playedCard], isScopa);
             this.lastCapturingPlayer = this.cpuPlayer;
             this.cpuPlayer.hero?.onCardCaptured(combination.length + 1, this.cpuPlayer);
+            
+            if (isScopa) {
+            this.cpuPlayer.hero?.onScopa(this.cpuPlayer);
+            }
+            
         } else {
             this.table.addCardsOnTable(playedCard);
         }

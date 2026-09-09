@@ -15,6 +15,7 @@ export class CollectorHero extends Hero {
   }
 
   onCardCaptured(capturedCount: number, player: Player): void {
+     console.log("onCardCaptured llamado con:", capturedCount); // temporal
     if (capturedCount >= 3) {
       player.addScore(1);
     }
