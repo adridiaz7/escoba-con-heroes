@@ -1,4 +1,5 @@
 import { Card, Suit } from "./Card.js";
+import { Hero } from "./Hero.js";
 
 export class Player{
     name: string
@@ -6,6 +7,7 @@ export class Player{
     #wonCards: Card[] = []
     #score: number = 0
     #scopas: number = 0
+    hero: Hero | null = null;
 
     constructor(name:string){
        this.name = name  
@@ -66,4 +68,9 @@ export class Player{
     hasCardsInHand(): boolean {
         return this.#hand.length > 0;
     }
+    
+    setHero(hero: Hero): void {
+        this.hero = hero;
+    }
+    
 }
