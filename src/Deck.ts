@@ -32,4 +32,8 @@ export class Deck {
     getRemainingCards():number{
         return this.#deckCards.length;
     }
+
+    returnCardToDeck(card: Card): void {
+        this.#deckCards.push(card);
+    }
 }
