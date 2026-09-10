@@ -33,4 +33,26 @@ const renderScreen = (): void => {
   domController.updatePileCounts(game.player.getWonCards().length, game.cpuPlayer.getWonCards().length);
 };
 
+const heroButton = document.getElementById("heroButton");
+
+heroButton?.addEventListener("click", () => {
+  const cardId = domController.getSelectedHandCardId();
+
+  if (!cardId) {
+    domController.showMessage("Selecciona primero una carta de tu mano.");
+    return;
+  }
+
+  const success = game.playerUsesHeroAbility(cardId);
+
+  if (!success) {
+    domController.showMessage(game.lastError ?? "No se pudo usar la habilidad.");
+  } else {
+    domController.showMessage("¡Habilidad usada!");
+    domController.clearSelectedHandCard(); // limpiamos la selección visual
+  }
+
+  renderScreen();
+});
+
 renderScreen();

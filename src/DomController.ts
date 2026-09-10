@@ -13,6 +13,7 @@ export class DomController {
   private deckCountElement: HTMLElement | null;
   private playerPileCountElement: HTMLElement | null;
   private cpuPileCountElement: HTMLElement | null;
+  private selectedHandCardId: string | null = null;
 
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
     this.messageBox = document.querySelector("#messageBox");
@@ -88,16 +89,41 @@ export class DomController {
     cardElement.classList.toggle("selected");
   }
 
-  renderHand(cards: Card[]): void {
-    if (!this.playerHandElement) return;
-
-    this.playerHandElement.innerHTML = "";
-
-    cards.forEach((card) => {
-      const cardElement = this.createCardElement(card, true, true);
-      this.playerHandElement!.appendChild(cardElement);
-    });
+  getSelectedHandCardId(): string | null {
+    return this.selectedHandCardId;
   }
+
+  clearSelectedHandCard(): void {
+    this.selectedHandCardId = null;
+  }
+
+  renderHand(cards: Card[]): void {
+  if (!this.playerHandElement) return;
+
+  this.playerHandElement.innerHTML = "";
+
+  cards.forEach((card) => {
+    const cardElement = this.createCardElement(card, true, true);
+
+    if (this.selectedHandCardId === card.getCardId()) {
+      cardElement.classList.add("selected");
+    }
+
+    cardElement.addEventListener("click", () => {
+      if (this.selectedHandCardId === cardElement.id) {
+        this.selectedHandCardId = null;
+        cardElement.classList.remove("selected");
+      } else {
+        const previous = this.playerHandElement?.querySelector(".selected");
+        if (previous) previous.classList.remove("selected");
+        this.selectedHandCardId = cardElement.id;
+        cardElement.classList.add("selected");
+      }
+    });
+
+    this.playerHandElement!.appendChild(cardElement);
+  });
+}
 
   renderCpuHand(cards: Card[]): void {
     if (!this.cpuHandElement) return;

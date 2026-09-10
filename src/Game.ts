@@ -3,8 +3,7 @@ import { Table } from "./Table.js";
 import { Player } from "./Player.js";
 import { CpuPlayer } from "./CpuPlayer.js";
 import { Card } from "./Card.js";
-import { CollectorHero } from "./CollectorHero.js";
-import { ScopaHero } from "./ScopaHero.js";
+import { ChangeCardHero } from "./ChangeCardHero.js";
 
 export class Game {
 
@@ -16,6 +15,7 @@ export class Game {
     isGameOver: boolean = false;
     lastError: string | null = null;
     lastCapturingPlayer: Player | null = null;
+    
 
     constructor () {
         this.deck = new Deck ();
@@ -31,7 +31,7 @@ export class Game {
 
         this.player.receiveCards(this.deck.dealCards(3))
         this.cpuPlayer.receiveCards(this.deck.dealCards(3))
-        this.player.setHero(new ScopaHero()); // temporal
+        this.player.setHero(new ChangeCardHero()); // temporal
 
         
     }
@@ -118,6 +118,29 @@ export class Game {
 
         this.checkRoundEnd();
         this.isPlayerTurn = true;
+    }
+
+    playerUsesHeroAbility(cardId: string): boolean {
+    if (!this.player.hero || this.player.hero.getAbilityMoment() !== "active") {
+        this.lastError = "Tu héroe no tiene habilidad activa.";
+        return false;
+    }
+
+    if (this.player.hero.isAbilityUsed()) {
+        this.lastError = "Ya usaste tu habilidad esta partida.";
+        return false;
+    }
+
+    const hero = this.player.hero as ChangeCardHero;
+    const success = hero.useAbility(this.player, this.deck, cardId);
+
+    if (!success) {
+        this.lastError = "Selecciona una carta de tu mano primero.";
+        return false;
+    }
+
+    this.lastError = null;
+    return true;
     }
 
     checkRoundEnd(): void {
