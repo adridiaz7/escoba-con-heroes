@@ -68,6 +68,10 @@ export class Player{
     hasCardsInHand(): boolean {
         return this.#hand.length > 0;
     }
+
+    getWonFigureCount(): number {
+        return this.getWonCards().filter((card) => card.value >= 10).length;
+    }
     
     setHero(hero: Hero): void {
         this.hero = hero;

@@ -136,6 +136,10 @@ export class Game {
                 this.table.removeCards(remainingCards);
                 this.lastCapturingPlayer.winCards(remainingCards, false);
             }
+
+            this.player.hero?.onGameEnd(this.player);
+            this.cpuPlayer.hero?.onGameEnd(this.cpuPlayer);
+
             this.isGameOver = true;
             this.calculateFinalScore();
         }
