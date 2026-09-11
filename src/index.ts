@@ -1,7 +1,24 @@
 import { Game } from "./Game.js";
 import { DomController } from "./DomController.js";
+import { createHeroFromId, createRandomHero } from "./Hero.js";
+
+const playerHeroId = localStorage.getItem("playerHeroId");
+
+if (!playerHeroId) {
+  window.location.href = "index.html";
+}
 
 let game = new Game();
+
+if (playerHeroId) {
+  const playerHero = createHeroFromId(playerHeroId);
+  if (playerHero) {
+    game.player.setHero(playerHero);
+  }
+}
+
+const cpuHero = createRandomHero(playerHeroId ?? "");
+game.cpuPlayer.setHero(cpuHero);
 
 const domController = new DomController((cardId, selectedIds) => {
   const success = game.playerPlaysCard(cardId, selectedIds);

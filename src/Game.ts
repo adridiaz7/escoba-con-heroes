@@ -3,7 +3,7 @@ import { Table } from "./Table.js";
 import { Player } from "./Player.js";
 import { CpuPlayer } from "./CpuPlayer.js";
 import { Card } from "./Card.js";
-import { ChangeCardHero } from "./ChangeCardHero.js";
+import { ChangeCardHero } from "./Hero.js";
 
 export class Game {
 
@@ -31,7 +31,7 @@ export class Game {
 
         this.player.receiveCards(this.deck.dealCards(3))
         this.cpuPlayer.receiveCards(this.deck.dealCards(3))
-        this.player.setHero(new ChangeCardHero()); // temporal
+        
 
         
     }
@@ -131,13 +131,6 @@ export class Game {
         return false;
     }
 
-    const hero = this.player.hero as ChangeCardHero;
-    const success = hero.useAbility(this.player, this.deck, cardId);
-
-    if (!success) {
-        this.lastError = "Selecciona una carta de tu mano primero.";
-        return false;
-    }
 
     this.lastError = null;
     return true;
