@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escoba con héroes</title>
-    <link rel="stylesheet" href="public/styles/style.css">
-    <script src="./dist/index.js" type="module" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escoba con héroes - Elige tu héroe</title>
+  <link rel="stylesheet" href="public/styles/heroSelect.css" />
 </head>
 <body>
-    <header>
-        <h1>Escoba con héroes</h1>
-        <p>Juego de escoba simplificada contra la CPU con habilidades especiales.</p>
-    </header>
 
-    <main>
-        <section id="heroSelection" class="panel">
-            <h2>Elige tu héroe</h2>
+  <header>
+    <h1>Escoba con héroes</h1>
+    <p>Elige tu héroe antes de empezar</p>
+  </header>
 
-            <div class="hero-list">
-                <button class="hero-card" data-hero="cambiacartas">
-                    <h3>Cambiacartas</h3>
-                    <p>Una vez por partida puede cambiar una carta de su mano.</p>
-                </button>
+  <main>
+    <section id="heroList">
 
-                <button class="hero-card" data-hero="recolectora">
-                    <h3>Recolectora</h3>
-                    <p>Si captura 3 o más cartas en una jugada, suma 1 punto extra.</p>
-                </button>
+      <article class="hero-card" data-hero="cambiacartas">
+        <div class="hero-image-container">
+          <img src="public/img/heroes/cambiacartas.svg" alt="Cambiacartas" class="hero-image" />
+        </div>
+        <h2 class="hero-name">Cambiacartas</h2>
+        <p class="hero-description">
+          Una vez por partida puede devolver una carta de la mano al mazo, barajar y robar otra.
+        </p>
+      </article>
 
-                <button class="hero-card" data-hero="coleccionista">
-                    <h3>Coleccionista</h3>
-                    <p>Si al final tiene 6 o más figuras, suma 2 puntos extra.</p>
-                </button>
-            </div>
-        </section>
+      <article class="hero-card" data-hero="recolectora">
+        <div class="hero-image-container">
+          <img src="public/img/heroes/recolectora.svg" alt="Recolectora" class="hero-image" />
+        </div>
+        <h2 class="hero-name">Recolectora</h2>
+        <p class="hero-description">
+          Si captura 3 o más cartas en una jugada, suma 1 punto extra.
+        </p>
+      </article>
 
-        <section id="gameBoard" class="panel">
-            <div class="score-board">
-                <p>Jugador: <span id="playerScore">0</span></p>
-                <p>CPU: <span id="cpuScore">0</span></p>
-                <p>Turno: <span id="turnInfo">Jugador</span></p>
-            </div>
+      <article class="hero-card" data-hero="coleccionista">
+        <div class="hero-image-container">
+          <img src="public/img/heroes/coleccionista.svg" alt="Coleccionista" class="hero-image" />
+        </div>
+        <h2 class="hero-name">Coleccionista</h2>
+        <p class="hero-description">
+          Al final de la partida, si tiene 6 o más figuras capturadas, suma 2 puntos extra.
+        </p>
+      </article>
 
-            <section class="game-zone">
-                <h2>Mesa</h2>
-                <div id="tableCards" class="cards-area"></div>
-            </section>
+      <article class="hero-card" data-hero="escobero">
+        <div class="hero-image-container">
+          <img src="public/img/heroes/escobero.svg" alt="Escobero" class="hero-image" />
+        </div>
+        <h2 class="hero-name">Escobero</h2>
+        <p class="hero-description">
+          Cada vez que hace una escoba, suma 1 punto adicional.
+        </p>
+      </article>
 
-            <section class="game-zone">
-                <h2>Jugador</h2>
-                <div id="playerHand" class="cards-area"></div>
-            </section>
+    </section>
 
-            <section class="game-zone">
-                <h2>CPU</h2>
-                <div id="cpuHand" class="cards-area"></div>
-            </section>
+    <div id="startSection">
+      <p id="heroSelectionMessage">Selecciona un héroe para empezar</p>
+      <button id="startButton" disabled>Iniciar partida</button>
+    </div>
+  </main>
 
-            <div class="actions">
-                <button id="playButton">Jugar carta</button>
-                <button id="heroButton">Usar habilidad</button>
-                <button id="restartButton">Reiniciar partida</button>
-            </div>
-
-            <p id="messageBox" class="message">Selecciona un héroe para empezar.</p>
-        </section>
-    </main>
+  <script type="module" src="dist/heroSelect.js"></script>
 </body>
 </html>
