@@ -3,7 +3,6 @@ import { Table } from "./Table.js";
 import { Player } from "./Player.js";
 import { CpuPlayer } from "./CpuPlayer.js";
 import { Card } from "./Card.js";
-import { ChangeCardHero } from "./Hero.js";
 
 export class Game {
 

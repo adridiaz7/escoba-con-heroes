@@ -1,7 +1,4 @@
-// heroSelect.ts
-// Este archivo gestiona la pantalla de selección de héroe.
-// Su único trabajo es: detectar qué héroe elige el jugador,
-// guardarlo en localStorage, y llevarle a la partida.
+
 
 let selectedHeroId: string | null = null;
 
@@ -28,4 +25,10 @@ heroCards.forEach((card) => {
       startButton.disabled = false;
     }
   });
+  startButton.addEventListener("click", () => {
+  if (!selectedHeroId) return;
+
+  localStorage.setItem("playerHeroId", selectedHeroId);
+  window.location.href = "game.html";
+});
 });
