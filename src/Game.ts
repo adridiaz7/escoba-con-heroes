@@ -3,6 +3,7 @@ import { Table } from "./Table.js";
 import { Player } from "./Player.js";
 import { CpuPlayer } from "./CpuPlayer.js";
 import { Card } from "./Card.js";
+import { ChangeCardHero } from "./Hero.js";
 
 export class Game {
 
@@ -120,6 +121,10 @@ export class Game {
     }
 
     playerUsesHeroAbility(cardId: string): boolean {
+    console.log("playerUsesHeroAbility llamado con:", cardId);
+    console.log("héroe:", this.player.hero);
+    console.log("momento:", this.player.hero?.getAbilityMoment());
+
     if (!this.player.hero || this.player.hero.getAbilityMoment() !== "active") {
         this.lastError = "Tu héroe no tiene habilidad activa.";
         return false;
@@ -130,6 +135,15 @@ export class Game {
         return false;
     }
 
+    const hero = this.player.hero as ChangeCardHero;
+    console.log("llamando a useAbility con cardId:", cardId);
+    const success = hero.useAbility(this.player, this.deck, cardId);
+    console.log("resultado de useAbility:", success);
+
+  if (!success) {
+    this.lastError = "Selecciona una carta de tu mano primero.";
+    return false;
+  }
 
     this.lastError = null;
     return true;

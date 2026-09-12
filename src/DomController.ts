@@ -17,6 +17,8 @@ export class DomController {
   private playerHeroElement: HTMLElement | null;
   private cpuHeroElement: HTMLElement | null;
 
+  private heroButtonElement: HTMLButtonElement | null;
+
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
     this.messageBox = document.querySelector("#messageBox");
     this.turnInfo = document.querySelector("#turnInfo");
@@ -30,6 +32,8 @@ export class DomController {
     this.cpuPileCountElement = document.querySelector("#cpuPileCount");
     this.playerHeroElement = document.querySelector("#playerHero");
     this.cpuHeroElement = document.querySelector("#cpuHero");
+
+    this.heroButtonElement = document.querySelector("#heroButton");
 
     this.onCardPlayed = onCardPlayed;
     this.setupTableDropZone();
@@ -212,4 +216,13 @@ renderHand(cards: Card[], allowSelection: boolean): void {
     this.cpuHeroElement.textContent = cpuHeroName;
   }
 }
+
+  updateHeroButton(visible: boolean, enabled: boolean): void {
+    if (!this.heroButtonElement) return;
+
+    this.heroButtonElement.style.display = visible ? "block" : "none";
+    this.heroButtonElement.disabled = !enabled;
+}
+
+
 }

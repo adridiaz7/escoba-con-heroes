@@ -61,6 +61,10 @@ const renderScreen = (): void => {
   game.cpuPlayer.hero?.getName() ?? "Sin héroe"
   );
 
+  const isActiveHero = game.player.hero?.getAbilityMoment() === "active";
+  const abilityAvailable = isActiveHero && !game.player.hero?.isAbilityUsed();
+  domController.updateHeroButton(isActiveHero, abilityAvailable);
+
 };
 
 const heroButton = document.getElementById("heroButton");
