@@ -41,7 +41,12 @@ const domController = new DomController((cardId, selectedIds) => {
 });
 
 const renderScreen = (): void => {
-  domController.renderHand(game.player.getHand());
+  const canSelectHandCard =
+  game.player.hero?.getAbilityMoment() === "active" &&
+  !game.player.hero?.isAbilityUsed() &&
+  !game.isGameOver;
+
+  domController.renderHand(game.player.getHand(), canSelectHandCard);
   domController.renderCpuHand(game.cpuPlayer.getHand());
   domController.renderTable(game.table.getCardsOnTable());
   domController.updateScores(game.player.getScore(), game.cpuPlayer.getScore());
@@ -49,10 +54,13 @@ const renderScreen = (): void => {
   domController.updateDeckCount(game.deck.getRemainingCards());
   domController.updatePileCounts(game.player.getWonCards().length, game.cpuPlayer.getWonCards().length);
 
+  domController.renderHand(game.player.getHand(), canSelectHandCard);
+
   domController.updateHeroInfo(
   game.player.hero?.getName() ?? "Sin héroe",
   game.cpuPlayer.hero?.getName() ?? "Sin héroe"
-);
+  );
+
 };
 
 const heroButton = document.getElementById("heroButton");

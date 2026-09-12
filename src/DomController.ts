@@ -102,7 +102,7 @@ export class DomController {
     this.selectedHandCardId = null;
   }
 
-  renderHand(cards: Card[]): void {
+renderHand(cards: Card[], allowSelection: boolean): void {
   if (!this.playerHandElement) return;
 
   this.playerHandElement.innerHTML = "";
@@ -114,17 +114,19 @@ export class DomController {
       cardElement.classList.add("selected");
     }
 
-    cardElement.addEventListener("click", () => {
-      if (this.selectedHandCardId === cardElement.id) {
-        this.selectedHandCardId = null;
-        cardElement.classList.remove("selected");
-      } else {
-        const previous = this.playerHandElement?.querySelector(".selected");
-        if (previous) previous.classList.remove("selected");
-        this.selectedHandCardId = cardElement.id;
-        cardElement.classList.add("selected");
-      }
-    });
+    if (allowSelection) {
+      cardElement.addEventListener("click", () => {
+        if (this.selectedHandCardId === cardElement.id) {
+          this.selectedHandCardId = null;
+          cardElement.classList.remove("selected");
+        } else {
+          const previous = this.playerHandElement?.querySelector(".card.selected");
+          if (previous) previous.classList.remove("selected");
+          this.selectedHandCardId = cardElement.id;
+          cardElement.classList.add("selected");
+        }
+      });
+    }
 
     this.playerHandElement!.appendChild(cardElement);
   });
