@@ -14,6 +14,8 @@ export class DomController {
   private playerPileCountElement: HTMLElement | null;
   private cpuPileCountElement: HTMLElement | null;
   private selectedHandCardId: string | null = null;
+  private playerHeroElement: HTMLElement | null;
+  private cpuHeroElement: HTMLElement | null;
 
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
     this.messageBox = document.querySelector("#messageBox");
@@ -26,6 +28,8 @@ export class DomController {
     this.deckCountElement = document.querySelector("#deckCount");
     this.playerPileCountElement = document.querySelector("#playerPileCount");
     this.cpuPileCountElement = document.querySelector("#cpuPileCount");
+    this.playerHeroElement = document.querySelector("#playerHero");
+    this.cpuHeroElement = document.querySelector("#cpuHero");
 
     this.onCardPlayed = onCardPlayed;
     this.setupTableDropZone();
@@ -50,6 +54,7 @@ export class DomController {
     if (this.cpuScore) {
       this.cpuScore.textContent = cpuPoints.toString();
     }
+  
   }
 
   private createCardElement(card: Card, faceUp: boolean, draggable: boolean): HTMLElement {
@@ -196,4 +201,13 @@ export class DomController {
       this.cpuPileCountElement.textContent = cpuCount.toString();
     }
   }
+
+  updateHeroInfo(playerHeroName: string, cpuHeroName: string): void {
+  if (this.playerHeroElement) {
+    this.playerHeroElement.textContent = playerHeroName;
+  }
+  if (this.cpuHeroElement) {
+    this.cpuHeroElement.textContent = cpuHeroName;
+  }
+}
 }
