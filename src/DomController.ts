@@ -16,8 +16,8 @@ export class DomController {
   private selectedHandCardId: string | null = null;
   private playerHeroElement: HTMLElement | null;
   private cpuHeroElement: HTMLElement | null;
-
   private heroButtonElement: HTMLButtonElement | null;
+  
 
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
     this.messageBox = document.querySelector("#messageBox");

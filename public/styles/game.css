@@ -33,7 +33,12 @@ html, body {
 }
 
 body {
-  background: var(--green-dark);
+  background-color: #317746 ;
+  background-image: url(../img/background-game.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;  
   color: var(--text-light);
   font-family: 'Georgia', serif;
   display: flex;
@@ -319,7 +324,6 @@ body {
   gap: 14px;
   align-items: center;
   justify-content: center;
-  border: 2px dashed rgba(255, 255, 255, 0.25);
   border-radius: 14px;
   padding: 16px;
   transition: border-color 0.2s, background 0.2s;

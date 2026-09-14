@@ -8,6 +8,11 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f3f1ed;
+  background-image: url(../img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;  
   color: #2f2f2f;
 }
 
@@ -21,7 +26,8 @@ header {
 
 header h1 {
   margin-bottom: 40px;
-  
+  color:#d63c0c;
+  font-display: fallback;
 }
 
 header p {
