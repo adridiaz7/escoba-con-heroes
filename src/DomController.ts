@@ -17,6 +17,8 @@ export class DomController {
   private playerHeroElement: HTMLElement | null;
   private cpuHeroElement: HTMLElement | null;
   private heroButtonElement: HTMLButtonElement | null;
+  private playerHeroImage: HTMLImageElement | null;
+  private cpuHeroImage: HTMLImageElement | null;
   
 
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
@@ -32,6 +34,8 @@ export class DomController {
     this.cpuPileCountElement = document.querySelector("#cpuPileCount");
     this.playerHeroElement = document.querySelector("#playerHero");
     this.cpuHeroElement = document.querySelector("#cpuHero");
+    this.playerHeroImage = document.querySelector("#playerHeroImage");
+    this.cpuHeroImage = document.querySelector("#cpuHeroImage");
 
     this.heroButtonElement = document.querySelector("#heroButton");
 
@@ -228,5 +232,15 @@ renderHand(cards: Card[], allowSelection: boolean): void {
     this.heroButtonElement.disabled = !enabled;
 }
 
+  updateHeroImages(playerHeroId: string, cpuHeroId: string): void {
+  if (this.playerHeroImage) {
+    this.playerHeroImage.src = `public/img/heroes/${playerHeroId}.jpg`;
+    this.playerHeroImage.alt = playerHeroId;
+  }
+  if (this.cpuHeroImage) {
+    this.cpuHeroImage.src = `public/img/heroes/${cpuHeroId}.jpg`;
+    this.cpuHeroImage.alt = cpuHeroId;
+  }
+}
 
 }

@@ -65,6 +65,10 @@ const renderScreen = (): void => {
   const abilityAvailable = isActiveHero && !game.player.hero?.isAbilityUsed();
   domController.updateHeroButton(isActiveHero, abilityAvailable);
 
+  const playerHeroId = game.player.hero?.getId() ?? "";
+  const cpuHeroId = game.cpuPlayer.hero?.getId() ?? "";
+  domController.updateHeroImages(playerHeroId, cpuHeroId);
+
 };
 
 const heroButton = document.getElementById("heroButton");
@@ -94,5 +98,8 @@ restartButton?.addEventListener("click", () => {
   localStorage.removeItem("playerHeroId");
   window.location.href = "index.html";
 });
+
+
+
 
 renderScreen();

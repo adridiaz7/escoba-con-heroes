@@ -354,11 +354,25 @@ body {
 }
 
 .message {
-  flex: 1;
-  text-align: center;
-  font-size: 15px;
-  min-height: 20px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30vh; 
+  background: rgba(0, 0, 0, 0.75);
   color: var(--text-light);
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(232, 200, 74, 0.4);
+  pointer-events: none; 
+  min-width: 200px;
+  text-align: center;
+  z-index: 100;
+  transition: opacity 0.2s;
+}
+
+.message:empty {
+  display: none;
 }
 
 .restart-btn {
