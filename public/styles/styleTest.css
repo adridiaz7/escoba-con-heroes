@@ -128,3 +128,11 @@ body {
   outline: 3px dashed orange;
   background: rgba(255, 165, 0, 0.1);
 }
+
+#heroButton{
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #333;
+}

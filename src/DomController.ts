@@ -71,7 +71,7 @@ export class DomController {
 
     image.onerror = () => {
       image.style.display = "none";
-      cardElement.textContent = faceUp ? card.getCardId() : "🂠";
+      cardElement.textContent = faceUp ? card.getCardId() : "../";
     };
 
     cardElement.appendChild(image);
@@ -220,7 +220,11 @@ renderHand(cards: Card[], allowSelection: boolean): void {
   updateHeroButton(visible: boolean, enabled: boolean): void {
     if (!this.heroButtonElement) return;
 
-    this.heroButtonElement.style.display = visible ? "block" : "none";
+    if (visible) {
+    this.heroButtonElement.classList.remove("hidden");
+    } else {
+      this.heroButtonElement.classList.add("hidden");
+    }
     this.heroButtonElement.disabled = !enabled;
 }
 

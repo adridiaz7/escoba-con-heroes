@@ -1,0 +1,375 @@
+/* =============================================
+   ESCOBA CON HÉROES — game.css
+   Paleta: tapete verde oscuro / cartas crema /
+   acentos dorados / héroe destacado
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --card-w: 100px;
+  --card-h: 150px;
+  --pile-w: 90px;
+  --pile-h: 135px;
+  --hero-img-size: 90px;
+  --green-dark: #0b4f35;
+  --green-mid: #0f6b47;
+  --green-light: #1a8a5a;
+  --gold: #e8c84a;
+  --gold-dark: #b8962a;
+  --text-light: #f0ead6;
+  --pile-bg: #1b3a6b;
+  --pile-border: #0d1f3c;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* el tablero ocupa toda la pantalla */
+}
+
+body {
+  background: var(--green-dark);
+  color: var(--text-light);
+  font-family: 'Georgia', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================
+   TABLERO PRINCIPAL
+   Tres filas: CPU / Mesa / Jugador + footer
+   ============================================= */
+
+#gameBoard {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr auto;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* =============================================
+   ZONAS DE JUGADOR (CPU arriba, Jugador abajo)
+   Héroe a la izquierda | Mano en el centro | Pila+puntos a la derecha
+   ============================================= */
+
+.player-zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.player-zone-bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 40px
+}
+
+/* =============================================
+   PANEL DEL HÉROE (imagen + nombre + indicadores)
+   ============================================= */
+
+.hero-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 110px;
+}
+
+.hero-image {
+  width: var(--hero-img-size);
+  height: var(--hero-img-size);
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  object-fit: cover;
+  background:transparent; /* fallback mientras no hay imagen */
+}
+
+.hero-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold);
+  text-align: center;
+  max-width: 100px;
+}
+
+/* Indicador de habilidad usada para la CPU */
+.ability-used {
+  font-size: 11px;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid #ff6b6b;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+
+/* Botón de habilidad: círculo dorado, como en el boceto */
+.hero-ability-btn {
+  border-radius: 20px;
+  padding: 4px;
+  border: 3px solid var(--gold-dark);
+  background: radial-gradient(circle at 40% 35%, #e8c84a, #a07820);
+  color: #3a2800;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-ability-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 4px 14px rgba(232, 200, 74, 0.5);
+}
+
+.hero-ability-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Clase utilitaria para ocultar elementos */
+.hidden {
+  display: none !important;
+}
+
+/* =============================================
+   ÁREA DE MANO (centro de cada zona)
+   ============================================= */
+
+.player-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.hand-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.hand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* =============================================
+   PANEL LATERAL (puntuación + pila)
+   ============================================= */
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 110px;
+}
+
+.score-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.score-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(240, 234, 214, 0.6);
+}
+
+.score-value {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* =============================================
+   CARTAS
+   ============================================= */
+
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  border-radius: 8px;
+  user-select: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
+
+.card.selected {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(232, 200, 74, 0.4);
+}
+
+
+
+/* =============================================
+   PILAS (mazo y cartas ganadas)
+   ============================================= */
+
+.pile {
+  position: relative;
+  width: var(--pile-w);
+  height: var(--pile-h);
+  flex-shrink: 0;
+}
+
+.pile::before,
+.pile::after {
+  content: "";
+  position: absolute;
+  width: var(--pile-w);
+  height: var(--pile-h);
+  background: var(--pile-bg);
+  border: 2px solid var(--pile-border);
+  border-radius: 8px;
+}
+
+.pile::before {
+  top: 5px;
+  left: 5px;
+  z-index: 0;
+}
+
+.pile::after {
+  top: 2px;
+  left: 2px;
+  z-index: 1;
+}
+
+.pile-count {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  background: var(--gold);
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  padding: 0 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* =============================================
+   ZONA DE MESA
+   ============================================= */
+
+.table-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 20px 40px;
+  border-top: 2px solid rgba(255,255,255,0.06);
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+}
+
+.deck-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.drop-area {
+  flex: 1;
+  min-height: 180px;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  padding: 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.drop-area.drag-over {
+  border-color: var(--gold);
+  background: rgba(232, 200, 74, 0.08);
+}
+
+/* =============================================
+   FOOTER (turno, mensaje, reiniciar)
+   ============================================= */
+
+.game-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  gap: 16px;
+}
+
+.turn-info {
+  font-size: 14px;
+  color: var(--gold);
+  font-style: italic;
+  min-width: 120px;
+}
+
+.message {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  min-height: 20px;
+  color: var(--text-light);
+}
+
+.restart-btn {
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--green-dark);
+  background: var(--gold);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.restart-btn:hover {
+  background: var(--gold-dark);
+  color: var(--text-light);
+}

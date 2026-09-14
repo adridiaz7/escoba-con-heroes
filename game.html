@@ -2,47 +2,95 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Escoba - Prueba de pintado</title>
-  <script src="./dist/index.js" type="module"></script>
-  <link rel="stylesheet" href="/public/styles/styleTest.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escoba con héroes</title>
+  <link rel="stylesheet" href="public/styles/game.css" />
 </head>
 <body>
-  <h1>Escoba (prueba)</h1>
 
-  <div class="scoreboard">
-    <p>Jugador: <span id="playerScore">0</span></p>
-    <p>CPU: <span id="cpuScore">0</span></p>
-    <p>Turno: <span id="turnInfo">Jugador</span></p>
+  <div id="gameBoard">
+
+    <!-- ============ ZONA CPU ============ -->
+    <section class="player-zone cpu-zone">
+
+      <div class="side-panel">
+        <div class="score-block">
+          <span class="score-label">CPU</span>
+          <span id="cpuScore" class="score-value">0</span>
+        </div>
+        <div class="pile" id="cpuPile">
+          <span class="pile-count" id="cpuPileCount">0</span>
+        </div>
+      </div>
+     
+
+      <div class="player-area">
+        <div class="hand-wrapper">
+          <div id="cpuHand" class="hand"></div>
+        </div>
+      </div>
+
+      
+
+       <div class="hero-panel">
+        <img id="cpuHeroImage" class="hero-image" src="" alt="Héroe CPU" />
+        <span id="cpuHero" class="hero-name"></span>
+        <span id="cpuAbilityUsed" class="ability-used hidden">Habilidad usada</span>
+      </div>
+
+    </section>
+
+    <!-- ============ ZONA MESA ============ -->
+    <section class="table-zone">
+
+      <div class="deck-wrapper">
+        <div class="pile deck-pile">
+          <span class="pile-count" id="deckCount">40</span>
+        </div>
+      </div>
+
+      <div id="tableCards" class="drop-area"></div>
+
+    </section>
+
+    <!-- ============ ZONA JUGADOR ============ -->
+    <section class="player-zone player-zone-bottom">
+
+      <div class="side-panel">
+        <div class="score-block">
+          <span class="score-label">Tú</span>
+          <span id="playerScore" class="score-value">0</span>
+        </div>
+        <div class="pile" id="playerPile">
+          <span class="pile-count" id="playerPileCount">0</span>
+        </div>
+      </div>
+
+      <div class="player-area">
+        <div class="hand-wrapper">
+          <div id="playerHand" class="hand"></div>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <img id="playerHeroImage" class="hero-image" src="" alt="Héroe jugador" />
+        <span id="playerHero" class="hero-name"></span>
+        <button id="heroButton" class="hero-ability-btn hidden">Usar habilidad</button>
+      </div>
+
+    </section>
+
+    <!-- ============ INFO Y MENSAJES ============ -->
+    <footer class="game-footer">
+      <span id="turnInfo" class="turn-info">Jugador</span>
+      <p id="messageBox" class="message"></p>
+     <button id="restartButton" class="restart-btn">Nueva partida</button>
+     
+    </footer>
+    
+
   </div>
 
-  <!-- Zona CPU -->
-  <section class="zone cpu-zone">
-    <p>Héroe: <span id="cpuHero"></span></p>
-    <div class="pile" id="cpuPile">
-      <span class="pile-count" id="cpuPileCount">0</span>
-    </div>
-    <div class="hand" id="cpuHand"></div>
-  </section>
-
-  <!-- Zona mesa -->
-  <section class="zone table-zone">
-    <div class="pile deck" id="deck">
-      <span class="pile-count" id="deckCount">40</span>
-    </div>
-    <div class="drop-area" id="tableCards"></div>
-  </section>
-
-  <!-- Zona jugador -->
-  <section class="zone player-zone">
-    <button id="heroButton" style="display: none;">Usar habilidad</button>
-    <p>Héroe: <span id="playerHero"></span></p>
-    <div class="pile" id="playerPile">
-      <p>Héroe: <span id="playerHero"></span></p>
-      <span class="pile-count" id="playerPileCount">0</span>
-    </div>
-    <div class="hand" id="playerHand"></div>
-  </section>
-
- 
+  <script type="module" src="dist/index.js"></script>
 </body>
 </html>
