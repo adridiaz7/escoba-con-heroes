@@ -89,4 +89,10 @@ heroButton?.addEventListener("click", () => {
   renderScreen();
 });
 
+const restartButton = document.getElementById("restartButton");
+restartButton?.addEventListener("click", () => {
+  localStorage.removeItem("playerHeroId");
+  window.location.href = "index.html";
+});
+
 renderScreen();
