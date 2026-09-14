@@ -95,7 +95,7 @@ body {
   width: var(--hero-img-size);
   height: var(--hero-img-size);
   border-radius: 50%;
-  border: 1px solid var(--gold);
+  border: 2px solid #8b7958;
   object-fit: cover;
   background:transparent; /* fallback mientras no hay imagen */
 }
@@ -379,6 +379,7 @@ body {
   padding: 6px 18px;
   font-size: 13px;
   font-weight: bold;
+  background-color: #8b7958;
   color: var(--green-dark);
   background: var(--gold);
   border: none;
