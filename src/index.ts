@@ -40,6 +40,66 @@ const domController = new DomController((cardId, selectedIds) => {
   }
 });
 
+const getFinalScoreMessage = (): string => {
+  const playerScore = game.player.getScore();
+  const cpuScore = game.cpuPlayer.getScore();
+
+  const playerCardCount = game.player.getWonCards().length;
+  const cpuCardCount = game.cpuPlayer.getWonCards().length;
+
+  const playerCardsPoint = playerCardCount > cpuCardCount ? 1 : 0;
+  const cpuCardsPoint = cpuCardCount > playerCardCount ? 1 : 0;
+
+  const playerGoldCount = game.player.getWonCardsBySuit("oros");
+  const cpuGoldCount = game.cpuPlayer.getWonCardsBySuit("oros");
+
+  const playerGoldPoint = playerGoldCount > cpuGoldCount ? 1 : 0;
+  const cpuGoldPoint = cpuGoldCount > playerGoldCount ? 1 : 0;
+
+  const playerSevenPoint = game.player.hasSevenOfGold() ? 1 : 0;
+  const cpuSevenPoint = game.cpuPlayer.hasSevenOfGold() ? 1 : 0;
+
+  const playerScopaPoints = game.player.getScopas();
+  const cpuScopaPoints = game.cpuPlayer.getScopas();
+
+  const playerNormalPoints =
+    playerCardsPoint + playerGoldPoint + playerSevenPoint + playerScopaPoints;
+
+  const cpuNormalPoints =
+    cpuCardsPoint + cpuGoldPoint + cpuSevenPoint + cpuScopaPoints;
+
+  const playerHeroPoints = Math.max(0, playerScore - playerNormalPoints);
+  const cpuHeroPoints = Math.max(0, cpuScore - cpuNormalPoints);
+
+  let resultMessage = "";
+
+  if (playerScore > cpuScore) {
+    resultMessage = `Fin de la partida. Has ganado ${playerScore} - ${cpuScore}.`;
+  } else if (cpuScore > playerScore) {
+    resultMessage = `Fin de la partida. Ha ganado la CPU ${cpuScore} - ${playerScore}.`;
+  } else {
+    resultMessage = `Fin de la partida. Empate ${playerScore} - ${cpuScore}.`;
+  }
+
+  return `${resultMessage}
+
+Tú:
+Cartas: ${playerCardsPoint}
+Oros: ${playerGoldPoint}
+7 de oros: ${playerSevenPoint}
+Escobas: ${playerScopaPoints}
+Héroe: ${playerHeroPoints}
+Total: ${playerScore}
+
+CPU:
+Cartas: ${cpuCardsPoint}
+Oros: ${cpuGoldPoint}
+7 de oros: ${cpuSevenPoint}
+Escobas: ${cpuScopaPoints}
+Héroe: ${cpuHeroPoints}
+Total: ${cpuScore}`;
+};
+
 const renderScreen = (): void => {
   const canSelectHandCard =
   game.player.hero?.getAbilityMoment() === "active" &&
@@ -68,20 +128,9 @@ const renderScreen = (): void => {
   const cpuHeroId = game.cpuPlayer.hero?.getId() ?? "";
   domController.updateHeroImages(playerHeroId, cpuHeroId);
   if (game.isGameOver) {
-    const playerScore = game.player.getScore();
-    const cpuScore = game.cpuPlayer.getScore();
-
     domController.updateTurn("Fin de partida");
     domController.updateHeroButton(false, false);
-
-    if (playerScore > cpuScore) {
-      domController.showMessage(`Fin de la partida. Has ganado ${playerScore} - ${cpuScore}.`);
-    } else if (cpuScore > playerScore) {
-      domController.showMessage(`Fin de la partida. Ha ganado la CPU ${cpuScore} - ${playerScore}.`);
-    } else {
-      domController.showMessage(`Fin de la partida. Empate ${playerScore} - ${cpuScore}.`);
-    }
-
+    domController.showMessage(getFinalScoreMessage());
     return;
   }
 };

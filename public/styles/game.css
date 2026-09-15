@@ -369,6 +369,9 @@ body {
   text-align: center;
   z-index: 100;
   transition: opacity 0.2s;
+  white-space: pre-line;
+  line-height: 1.4;
+  max-width: 420px;
 }
 
 .message:empty {
