@@ -1,5 +1,3 @@
-
-
 let selectedHeroId: string | null = null;
 
 const heroCards = document.querySelectorAll<HTMLElement>(".hero-card");
@@ -8,27 +6,27 @@ const selectionMessage = document.getElementById("heroSelectionMessage") as HTML
 
 heroCards.forEach((card) => {
   card.addEventListener("click", () => {
-    heroCards.forEach((c) => c.classList.remove("selected"));
-    card.classList.add("selected");
-    
-    startButton.addEventListener("click", () => {
-    if (!selectedHeroId) return;
-
-    localStorage.setItem("playerHeroId", selectedHeroId);
-    window.location.href = "game.html";
+    heroCards.forEach((heroCard) => {
+      heroCard.classList.remove("selected");
     });
 
+    card.classList.add("selected");
     selectedHeroId = card.dataset.hero ?? null;
 
     if (selectedHeroId) {
-      selectionMessage.textContent = `Héroe seleccionado: ${card.querySelector(".hero-name")?.textContent}`;
+      const heroName = card.querySelector(".hero-name")?.textContent ?? "héroe";
+      selectionMessage.textContent = `Héroe seleccionado: ${heroName}`;
       startButton.disabled = false;
     }
   });
-  startButton.addEventListener("click", () => {
-  if (!selectedHeroId) return;
+});
+
+startButton.addEventListener("click", () => {
+  if (!selectedHeroId) {
+    selectionMessage.textContent = "Selecciona un héroe para empezar";
+    return;
+  }
 
   localStorage.setItem("playerHeroId", selectedHeroId);
   window.location.href = "game.html";
-});
 });

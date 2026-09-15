@@ -54,8 +54,7 @@ const renderScreen = (): void => {
   domController.updateDeckCount(game.deck.getRemainingCards());
   domController.updatePileCounts(game.player.getWonCards().length, game.cpuPlayer.getWonCards().length);
 
-  domController.renderHand(game.player.getHand(), canSelectHandCard);
-
+  
   domController.updateHeroInfo(
   game.player.hero?.getName() ?? "Sin héroe",
   game.cpuPlayer.hero?.getName() ?? "Sin héroe"
@@ -68,7 +67,23 @@ const renderScreen = (): void => {
   const playerHeroId = game.player.hero?.getId() ?? "";
   const cpuHeroId = game.cpuPlayer.hero?.getId() ?? "";
   domController.updateHeroImages(playerHeroId, cpuHeroId);
+  if (game.isGameOver) {
+    const playerScore = game.player.getScore();
+    const cpuScore = game.cpuPlayer.getScore();
 
+    domController.updateTurn("Fin de partida");
+    domController.updateHeroButton(false, false);
+
+    if (playerScore > cpuScore) {
+      domController.showMessage(`Fin de la partida. Has ganado ${playerScore} - ${cpuScore}.`);
+    } else if (cpuScore > playerScore) {
+      domController.showMessage(`Fin de la partida. Ha ganado la CPU ${cpuScore} - ${playerScore}.`);
+    } else {
+      domController.showMessage(`Fin de la partida. Empate ${playerScore} - ${cpuScore}.`);
+    }
+
+    return;
+  }
 };
 
 const heroButton = document.getElementById("heroButton");
