@@ -33,11 +33,16 @@ const domController = new DomController((cardId, selectedIds) => {
   renderScreen();
 
   if (success) {
+  window.setTimeout(() => {
+    game.cpuPlaysTurn();
+    renderScreen(); // muestra la carta de la CPU antes de resolver
+
     window.setTimeout(() => {
-      game.cpuPlaysTurn();
-      renderScreen();
-    }, 1200);
-  }
+      game.resolveCpuTurn();
+      renderScreen(); // muestra el resultado final
+    }, 1000);
+  }, 1200);
+}
 });
 
 const renderScreen = (): void => {
@@ -48,7 +53,7 @@ const renderScreen = (): void => {
 
   domController.renderHand(game.player.getHand(), canSelectHandCard);
   domController.renderCpuHand(game.cpuPlayer.getHand());
-  domController.renderTable(game.table.getCardsOnTable());
+  domController.renderTable(game.table.getCardsOnTable(), game.cpuPlayedCard);
   domController.updateScores(game.player.getScore(), game.cpuPlayer.getScore());
   domController.updateTurn(game.isPlayerTurn ? "Jugador" : "CPU");
   domController.updateDeckCount(game.deck.getRemainingCards());

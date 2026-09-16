@@ -341,6 +341,12 @@ body {
   background: rgba(232, 200, 74, 0.08);
 }
 
+.cpu-played-card {
+  opacity: 0.85;
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
 /* =============================================
    FOOTER (turno, mensaje, reiniciar)
    ============================================= */

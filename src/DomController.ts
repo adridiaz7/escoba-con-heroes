@@ -155,7 +155,7 @@ renderHand(cards: Card[], allowSelection: boolean): void {
     });
   }
 
-  renderTable(cards: Card[]): void {
+  renderTable(cards: Card[], cpuPlayedCard: Card | null = null) {
     if (!this.tableElement) return;
 
     this.tableElement.innerHTML = "";
@@ -173,6 +173,14 @@ renderHand(cards: Card[], allowSelection: boolean): void {
 
       this.tableElement!.appendChild(cardElement);
     });
+
+    if (cpuPlayedCard) {
+    const cpuCardElement = this.createCardElement(cpuPlayedCard, true, false);
+    cpuCardElement.classList.add("cpu-played-card");
+    this.tableElement!.appendChild(cpuCardElement);
+  }
+
+
   }
 
   private setupTableDropZone(): void {

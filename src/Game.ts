@@ -15,6 +15,8 @@ export class Game {
     isGameOver: boolean = false;
     lastError: string | null = null;
     lastCapturingPlayer: Player | null = null;
+    cpuPlayedCard: Card | null = null;
+    private cpuPendingCombination: Card[] = [];
     
 
     constructor () {
@@ -90,35 +92,50 @@ export class Game {
      }
 
     cpuPlaysTurn(): void {
-        if (this.isPlayerTurn || this.isGameOver) {
+    if (this.isPlayerTurn || this.isGameOver) {
         return;
-        }
-
-        const { card, combination } = this.cpuPlayer.chooseMove(this.table);
-        const playedCard = this.cpuPlayer.playCard(card.getCardId());
-
-        if (!playedCard) {
-            return;
-        }
-
-        if (combination.length > 0) {
-            this.table.removeCards(combination);
-            const isScopa = this.table.isTableEmpty();
-            this.cpuPlayer.winCards([...combination, playedCard], isScopa);
-            this.lastCapturingPlayer = this.cpuPlayer;
-            this.cpuPlayer.hero?.onCardCaptured(combination.length + 1, this.cpuPlayer);
-            
-            if (isScopa) {
-            this.cpuPlayer.hero?.onScopa(this.cpuPlayer);
-            }
-
-        } else {
-            this.table.addCardsOnTable(playedCard);
-        }
-
-        this.checkRoundEnd();
-        this.isPlayerTurn = true;
     }
+
+    const { card, combination } = this.cpuPlayer.chooseMove(this.table);
+    const playedCard = this.cpuPlayer.playCard(card.getCardId());
+
+    if (!playedCard) {
+        return;
+    }
+
+    // Guardamos la jugada para mostrarla antes de resolverla
+    this.cpuPlayedCard = playedCard;
+    this.cpuPendingCombination = combination;
+    }
+
+    resolveCpuTurn(): void {
+    if (!this.cpuPlayedCard) return;
+
+    const playedCard = this.cpuPlayedCard;
+    const combination = this.cpuPendingCombination;
+
+    this.cpuPlayedCard = null;
+    this.cpuPendingCombination = [];
+
+    if (combination.length > 0) {
+        this.table.removeCards(combination);
+        const isScopa = this.table.isTableEmpty();
+        this.cpuPlayer.winCards([...combination, playedCard], isScopa);
+        this.lastCapturingPlayer = this.cpuPlayer;
+        this.cpuPlayer.hero?.onCardCaptured(combination.length + 1, this.cpuPlayer);
+
+        if (isScopa) {
+        this.cpuPlayer.hero?.onScopa(this.cpuPlayer);
+        }
+    } else {
+        this.table.addCardsOnTable(playedCard);
+    }
+
+    this.isPlayerTurn = true;
+    this.checkRoundEnd();
+    }
+
+    
 
     playerUsesHeroAbility(cardId: string): boolean {
     console.log("playerUsesHeroAbility llamado con:", cardId);
@@ -143,7 +160,7 @@ export class Game {
   if (!success) {
     this.lastError = "Selecciona una carta de tu mano primero.";
     return false;
-  }
+    }
 
     this.lastError = null;
     return true;
