@@ -17,13 +17,15 @@
         <div class="score-block">
           <span class="score-label">CPU</span>
           <span id="cpuScore" class="score-value">0</span>
+          <span id="cpuScopaCount" class="scopa-count">🧹 0</span> 
+     
         </div>
         <div class="pile" id="cpuPile">
           <span class="pile-count" id="cpuPileCount">0</span>
         </div>
       </div>
-      <span id="cpuScopaCount" class="scopa-count">🧹 0</span> 
-     
+  
+  
 
       <div class="player-area">
         <div class="hand-wrapper">
@@ -51,6 +53,7 @@
       </div>
       <div id="tableCards" class="drop-area"></div>
 
+      <button id="restartButton" class="restart-btn">Nueva partida</button>
     </section>
 
     <!-- ============ ZONA JUGADOR ============ -->
@@ -61,13 +64,13 @@
         <div class="score-block">
           <span class="score-label">Tú</span>
           <span id="playerScore" class="score-value">0</span>
+          <span id="playerScopaCount" class="scopa-count">🧹 0</span>
         </div>
         <div class="pile" id="playerPile">
           <span class="pile-count" id="playerPileCount">0</span>
         </div>
       </div>
-      <span id="playerScopaCount" class="scopa-count">🧹 0</span>
-
+      
 
       <div class="player-area">
         <div class="hand-wrapper">
@@ -87,7 +90,6 @@
     <footer class="game-footer">
       <span id="turnInfo" class="turn-info">Jugador</span>
       <p id="messageBox" class="message"></p>
-     <button id="restartButton" class="restart-btn">Nueva partida</button>
      
     </footer>
     

@@ -81,7 +81,7 @@ body {
 }
 
 .scopa-count {
-  font-size: 14px;
+  font-size: 20px;
   color: var(--gold);
   font-weight: bold;
 }
@@ -102,7 +102,7 @@ body {
   width: var(--hero-img-size);
   height: var(--hero-img-size);
   border-radius: 50%;
-  border: 2px solid #8b7958;
+  border: 1px solid #8b7958;
   object-fit: cover;
   background:transparent; /* fallback mientras no hay imagen */
 }
@@ -264,7 +264,10 @@ body {
   position: absolute;
   width: var(--pile-w);
   height: var(--pile-h);
-  background: var(--pile-bg);
+  background-color: var(--pile-bg); /* fallback si no carga la imagen */
+  background-image: url('../img/back.svg');
+  background-size: cover;
+  background-position: center;
   border: 2px solid var(--pile-border);
   border-radius: 8px;
 }
@@ -390,13 +393,13 @@ body {
 
 .restart-btn {
   padding: 6px 18px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   background-color: #8b7958;
   color: var(--green-dark);
   background: var(--gold);
   border: none;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
   transition: background 0.15s;
 }
