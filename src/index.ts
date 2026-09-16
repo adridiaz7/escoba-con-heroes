@@ -69,6 +69,9 @@ const renderScreen = (): void => {
   const cpuHeroId = game.cpuPlayer.hero?.getId() ?? "";
   domController.updateHeroImages(playerHeroId, cpuHeroId);
 
+  domController.updateScopaCount(
+  game.player.getScopas(),
+  game.cpuPlayer.getScopas());
 };
 
 const heroButton = document.getElementById("heroButton");
@@ -89,6 +92,8 @@ heroButton?.addEventListener("click", () => {
     domController.showMessage("¡Habilidad usada!");
     domController.clearSelectedHandCard(); // limpiamos la selección visual
   }
+
+  
 
   renderScreen();
 });

@@ -19,6 +19,8 @@ export class DomController {
   private heroButtonElement: HTMLButtonElement | null;
   private playerHeroImage: HTMLImageElement | null;
   private cpuHeroImage: HTMLImageElement | null;
+  private playerScopaCountElement: HTMLElement | null;
+  private cpuScopaCountElement: HTMLElement | null;
   
 
   constructor(onCardPlayed: (cardId: string, selectedIds: string[]) => void) {
@@ -36,6 +38,8 @@ export class DomController {
     this.cpuHeroElement = document.querySelector("#cpuHero");
     this.playerHeroImage = document.querySelector("#playerHeroImage");
     this.cpuHeroImage = document.querySelector("#cpuHeroImage");
+    this.playerScopaCountElement = document.querySelector("#playerScopaCount");
+    this.cpuScopaCountElement = document.querySelector("#cpuScopaCount");
 
     this.heroButtonElement = document.querySelector("#heroButton");
 
@@ -241,6 +245,15 @@ renderHand(cards: Card[], allowSelection: boolean): void {
     this.cpuHeroImage.src = `public/img/heroes/${cpuHeroId}.jpg`;
     this.cpuHeroImage.alt = cpuHeroId;
   }
+}
+
+  updateScopaCount(playerScopas: number, cpuScopas: number): void {
+    if (this.playerScopaCountElement) {
+      this.playerScopaCountElement.textContent = `🧹 ${playerScopas}`;
+    }
+    if (this.cpuScopaCountElement) {
+      this.cpuScopaCountElement.textContent = `🧹 ${cpuScopas}`;
+    }
 }
 
 }

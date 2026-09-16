@@ -64,6 +64,7 @@ body {
    ZONAS DE JUGADOR (CPU arriba, Jugador abajo)
    Héroe a la izquierda | Mano en el centro | Pila+puntos a la derecha
    ============================================= */
+  
 
 .player-zone {
   display: flex;
@@ -77,6 +78,12 @@ body {
   border-bottom: none;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   gap: 40px
+}
+
+.scopa-count {
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: bold;
 }
 
 /* =============================================
