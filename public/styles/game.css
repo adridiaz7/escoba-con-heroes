@@ -210,6 +210,13 @@ body {
   font-weight: bold;
   color: var(--gold);
   line-height: 1;
+
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* =============================================
@@ -265,7 +272,7 @@ body {
   width: var(--pile-w);
   height: var(--pile-h);
   background-color: var(--pile-bg); /* fallback si no carga la imagen */
-  background-image: url('../img/back.svg');
+  background-image: url('../img/back.png');
   background-size: cover;
   background-position: center;
   border: 2px solid var(--pile-border);
