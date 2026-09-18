@@ -395,3 +395,8 @@ body {
   background: var(--gold-dark);
   color: var(--text-light);
 }
+
+.message {
+  white-space: pre-line;
+  line-height: 1.6;
+}

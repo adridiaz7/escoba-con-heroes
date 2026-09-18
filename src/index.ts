@@ -71,6 +71,14 @@ const getFinalScoreMessage = (): string => {
   const playerHeroPoints = Math.max(0, playerScore - playerNormalPoints);
   const cpuHeroPoints = Math.max(0, cpuScore - cpuNormalPoints);
 
+  const formatPoints = (points: number): string => {
+    return points === 1 ? "1 punto" : `${points} puntos`;
+  };
+
+  const formatSevenOfGold = (points: number): string => {
+    return points === 1 ? "Sí (+1 punto)" : "No (+0 puntos)";
+  };
+
   let resultMessage = "";
 
   if (playerScore > cpuScore) {
@@ -83,21 +91,23 @@ const getFinalScoreMessage = (): string => {
 
   return `${resultMessage}
 
-Tú:
-Cartas: ${playerCardsPoint}
-Oros: ${playerGoldPoint}
-7 de oros: ${playerSevenPoint}
-Escobas: ${playerScopaPoints}
-Héroe: ${playerHeroPoints}
-Total: ${playerScore}
+DESGLOSE FINAL
 
-CPU:
-Cartas: ${cpuCardsPoint}
-Oros: ${cpuGoldPoint}
-7 de oros: ${cpuSevenPoint}
-Escobas: ${cpuScopaPoints}
-Héroe: ${cpuHeroPoints}
-Total: ${cpuScore}`;
+TÚ
+- Cartas capturadas: ${playerCardCount} (${formatPoints(playerCardsPoint)})
+- Oros capturados: ${playerGoldCount} (${formatPoints(playerGoldPoint)})
+- Siete de oros: ${formatSevenOfGold(playerSevenPoint)}
+- Escobas: ${playerScopaPoints} (${formatPoints(playerScopaPoints)})
+- Bonificación de héroe: ${formatPoints(playerHeroPoints)}
+- TOTAL: ${formatPoints(playerScore)}
+
+CPU
+- Cartas capturadas: ${cpuCardCount} (${formatPoints(cpuCardsPoint)})
+- Oros capturados: ${cpuGoldCount} (${formatPoints(cpuGoldPoint)})
+- Siete de oros: ${formatSevenOfGold(cpuSevenPoint)}
+- Escobas: ${cpuScopaPoints} (${formatPoints(cpuScopaPoints)})
+- Bonificación de héroe: ${formatPoints(cpuHeroPoints)}
+- TOTAL: ${formatPoints(cpuScore)}`;
 };
 
 const renderScreen = (): void => {
@@ -167,3 +177,4 @@ restartButton?.addEventListener("click", () => {
 
 
 renderScreen();
+
