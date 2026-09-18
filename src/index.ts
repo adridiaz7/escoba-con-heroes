@@ -71,13 +71,13 @@ const getFinalScoreMessage = (): string => {
   const playerHeroPoints = Math.max(0, playerScore - playerNormalPoints);
   const cpuHeroPoints = Math.max(0, cpuScore - cpuNormalPoints);
 
-  const formatPoints = (points: number): string => {
-    return points === 1 ? "1 punto" : `${points} puntos`;
-  };
+const formatPoints = (points: number): string => {
+  return points === 1 ? "1 pt" : `${points} pts`;
+};
 
-  const formatSevenOfGold = (points: number): string => {
-    return points === 1 ? "Sí (+1 punto)" : "No (+0 puntos)";
-  };
+const formatSevenOfGold = (points: number): string => {
+  return points === 1 ? "Sí (+1 pt)" : "No (+0 pts)";
+};
 
   let resultMessage = "";
 
@@ -91,23 +91,23 @@ const getFinalScoreMessage = (): string => {
 
   return `${resultMessage}
 
-DESGLOSE FINAL
+🏆 DESGLOSE FINAL
 
-TÚ
-- Cartas capturadas: ${playerCardCount} (${formatPoints(playerCardsPoint)})
-- Oros capturados: ${playerGoldCount} (${formatPoints(playerGoldPoint)})
-- Siete de oros: ${formatSevenOfGold(playerSevenPoint)}
-- Escobas: ${playerScopaPoints} (${formatPoints(playerScopaPoints)})
-- Bonificación de héroe: ${formatPoints(playerHeroPoints)}
-- TOTAL: ${formatPoints(playerScore)}
+👤 TÚ
+🃏 Cartas: ${playerCardCount} (${formatPoints(playerCardsPoint)})
+🟡 Oros: ${playerGoldCount} (${formatPoints(playerGoldPoint)})
+⭐ 7 de oros: ${formatSevenOfGold(playerSevenPoint)}
+🧹 Escobas: ${playerScopaPoints} (${formatPoints(playerScopaPoints)})
+🦸 Héroe: ${formatPoints(playerHeroPoints)}
+✅ TOTAL: ${formatPoints(playerScore)}
 
-CPU
-- Cartas capturadas: ${cpuCardCount} (${formatPoints(cpuCardsPoint)})
-- Oros capturados: ${cpuGoldCount} (${formatPoints(cpuGoldPoint)})
-- Siete de oros: ${formatSevenOfGold(cpuSevenPoint)}
-- Escobas: ${cpuScopaPoints} (${formatPoints(cpuScopaPoints)})
-- Bonificación de héroe: ${formatPoints(cpuHeroPoints)}
-- TOTAL: ${formatPoints(cpuScore)}`;
+🤖 CPU
+🃏 Cartas: ${cpuCardCount} (${formatPoints(cpuCardsPoint)})
+🟡 Oros: ${cpuGoldCount} (${formatPoints(cpuGoldPoint)})
+⭐ 7 de oros: ${formatSevenOfGold(cpuSevenPoint)}
+🧹 Escobas: ${cpuScopaPoints} (${formatPoints(cpuScopaPoints)})
+🦸 Héroe: ${formatPoints(cpuHeroPoints)}
+✅ TOTAL: ${formatPoints(cpuScore)}`;
 };
 
 const renderScreen = (): void => {
