@@ -13,8 +13,8 @@
 :root {
   --card-w: 100px;
   --card-h: 150px;
-  --pile-w: 90px;
-  --pile-h: 135px;
+  --pile-w: 100px;
+  --pile-h: 150px;
   --hero-img-size: 90px;
   --green-dark: #0b4f35;
   --green-mid: #0f6b47;
@@ -34,7 +34,7 @@ html, body {
 
 body {
   background-color: #317746 ;
-  background-image: url(../img/background-game.jpg);
+  background-image: url(../img/backgrounds/background-game.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -272,7 +272,7 @@ body {
   width: var(--pile-w);
   height: var(--pile-h);
   background-color: var(--pile-bg); /* fallback si no carga la imagen */
-  background-image: url('../img/back.png');
+  background-image: url('../img/cards/back.png');
   background-size: cover;
   background-position: center;
   border: 2px solid var(--pile-border);

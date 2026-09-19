@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f3f1ed;
-  background-image: url(../img/background.jpg);
+  background-image: url(../img/backgrounds/background.jpggi);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -117,7 +117,7 @@ main {
 
 #heroSelectionMessage {
   margin-bottom: 20px;
-  color: #fff2f2;
+  color: #ffff;
   
 }
 
@@ -125,12 +125,12 @@ main {
 #startButton {
   display: inline-block;
   padding: 14px 32px;
-  
   border-radius: 40px;
-  background-color: #8b7958;
-  color: #ffffffe3;
+  color: #EFE3C7;
+  background-color: #153C6B;
+
   font-size: 1rem;
-  border: none;
+  border: 3px, solid #4A3527;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -139,12 +139,12 @@ main {
 }
 
 #startButton:hover:not(:disabled) {
-  background-color: #51463e;
+  background-color: #4A3527;
 }
 
 #startButton:disabled {
-  background-color: #aaa;
-  color: #e8e8e8;
+  background-color:  #153c6b96;
+  color: #efe3c79c;
   cursor: not-allowed;
 }
 
