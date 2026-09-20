@@ -75,7 +75,7 @@ body {
 }
 
 .scopa-count {
-  font-size: 20px;
+  font-size: 16px;
   color: #22160f;
   font-weight: bold;
 }
@@ -132,7 +132,7 @@ body {
   height: 40px;
   padding: 4px;
   border: 3px solid var(--gold-dark);
-  background: radial-gradient(circle at 40% 35%, #e9d8b7d7, #a07720e1);
+  background: radial-gradient(circle at 40% 35%, #d6bc7f, #a78640ee);
   color: #3a2800;
   font-size: 14px;
   font-weight: bold;
@@ -198,12 +198,13 @@ body {
   flex-direction: column;
   align-items: center;
   background: linear-gradient(135deg, #f2e8c9bd 0%, #e8d5a3 50%, #f2e8c9d3 100%);
-  border: 3px solid  #8b6a3e;
-  border-radius: 20px;
+  border: 2px solid  #8b6a3e;
+  border-radius: 12px;
   padding: 8px 12px;
   text-align: center;
-  min-width: 110px;
-  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6),inset 0 -1px 3px rgba(139, 105, 20, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);
+  min-width: 90px;
+  gap: 4px;
+ box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), inset 0 -1px 3px rgba(139, 105, 20, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .score-label {
@@ -218,22 +219,31 @@ body {
 }
 
 .score-value {
-  font-size: 32px;
-  height: 50px;
-  width: 50px;
-  color: #22160f;
-  padding: 4px 12px;
-  border-radius: 50%;
+  font-size: 20px;
   font-weight: bold;
+  color: #22160f;
+  height: auto;
+  width: auto;
+  
+  padding: 0;
+  border-radius: 0;
+  
   align-items: center;
 
 }
+
+.score-icon {
+  font-size: 12px;
+}
+
 
 .score-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
+
 
 /* =============================================
    CARTAS

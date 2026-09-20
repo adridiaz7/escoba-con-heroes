@@ -102,8 +102,6 @@ export class Game {
     if (!playedCard) {
         return;
     }
-
-    // Guardamos la jugada para mostrarla antes de resolverla
     this.cpuPlayedCard = playedCard;
     this.cpuPendingCombination = combination;
     }
@@ -148,17 +146,16 @@ export class Game {
     }
 
     if (this.player.hero.isAbilityUsed()) {
-        this.lastError = "Ya usaste tu habilidad esta partida.";
+        this.lastError = "Ya has usado tu habilidad.";
         return false;
     }
 
     const hero = this.player.hero as ChangeCardHero;
-    console.log("llamando a useAbility con cardId:", cardId);
     const success = hero.useAbility(this.player, this.deck, cardId);
     console.log("resultado de useAbility:", success);
 
   if (!success) {
-    this.lastError = "Selecciona una carta de tu mano primero.";
+    this.lastError = "Primero selecciona una carta de tu mano.";
     return false;
     }
 
