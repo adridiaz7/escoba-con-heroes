@@ -424,6 +424,23 @@ body {
   max-width: 420px;
 }
 
+.message.message-final {
+  top: 50%;
+  bottom: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 560px);
+  max-width: 560px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 1.5;
+  padding: 20px 28px;
+  border-radius: 18px;
+  pointer-events: auto;
+}
+
 .message:empty {
   display: none;
 }

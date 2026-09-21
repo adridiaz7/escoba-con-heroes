@@ -48,11 +48,16 @@ export class DomController {
   }
 
   showMessage(message: string): void {
-    if (this.messageBox) {
-      this.messageBox.textContent = message;
+  if (this.messageBox) {
+    this.messageBox.textContent = message;
+
+    if (message.includes("DESGLOSE FINAL")) {
+      this.messageBox.classList.add("message-final");
+    } else {
+      this.messageBox.classList.remove("message-final");
     }
   }
-
+}
   updateTurn(turnText: string): void {
     if (this.turnInfo) {
       this.turnInfo.textContent = turnText;
