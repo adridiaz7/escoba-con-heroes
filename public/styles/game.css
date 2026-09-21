@@ -197,7 +197,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #f2e8c9bd 0%, #e8d5a3 50%, #f2e8c9d3 100%);
+  background: linear-gradient(135deg, #c5bb9bbd 0%, #c2ab72 50%, #ebe6d8d3 100%);
   border: 2px solid  #8b6a3e;
   border-radius: 12px;
   padding: 8px 12px;
@@ -219,12 +219,12 @@ body {
 }
 
 .score-value {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   color: #22160f;
   height: auto;
   width: auto;
-  
+
   padding: 0;
   border-radius: 0;
   
@@ -233,9 +233,8 @@ body {
 }
 
 .score-icon {
-  font-size: 12px;
+  font-size: 16px;
 }
-
 
 .score-row {
   display: flex;
@@ -243,6 +242,11 @@ body {
   gap: 8px;
 }
 
+.scopa-count {
+  font-size: 16px;
+  font-weight: bold;
+  color: #22160f;
+}
 
 
 /* =============================================
