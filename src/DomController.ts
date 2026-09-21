@@ -256,6 +256,9 @@ renderHand(cards: Card[], allowSelection: boolean): void {
 }
 
   updateScopaCount(playerScopas: number, cpuScopas: number): void {
+
+    console.log("ACTUALIZANDO ESCOBAS:", playerScopas, cpuScopas);
+    
     if (this.playerScopaCountElement) {
       this.playerScopaCountElement.textContent = `🧹 ${playerScopas}`;
     }
@@ -263,5 +266,4 @@ renderHand(cards: Card[], allowSelection: boolean): void {
       this.cpuScopaCountElement.textContent = `🧹 ${cpuScopas}`;
     }
 }
-
 }
