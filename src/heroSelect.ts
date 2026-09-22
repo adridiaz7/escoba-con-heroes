@@ -3,6 +3,9 @@ let selectedHeroId: string | null = null;
 const heroCards = document.querySelectorAll<HTMLElement>(".hero-card");
 const startButton = document.getElementById("startButton") as HTMLButtonElement;
 const selectionMessage = document.getElementById("heroSelectionMessage") as HTMLElement;
+const rulesButton = document.getElementById("rulesButton") as HTMLButtonElement;
+const closeRulesButton = document.getElementById("closeRulesButton") as HTMLButtonElement;
+const rulesModal = document.getElementById("rulesModal") as HTMLElement;
 
 heroCards.forEach((card) => {
   card.addEventListener("click", () => {
