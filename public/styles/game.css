@@ -15,8 +15,6 @@
   --pile-h: 150px;
   --hero-img-size: 110px;
   --text-light: #f0ead6;
-  --pile-bg: #1b3a6b;
-  --pile-border: #0d1f3c;
 }
 
 html, body {
@@ -32,7 +30,7 @@ body {
   background-position: center center;
   height: 100vh;  
   color: var(--text-light);
-  font-family: 'Almendra', serif;
+ 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,6 +71,7 @@ body {
 }
 
 .scopa-count {
+  font-family: 'Almendra', serif;
   font-size: 16px;
   color: #22160f;
   font-weight: bold;
@@ -95,14 +94,15 @@ body {
 .hero-image {
   width: var(--hero-img-size);
   height: var(--hero-img-size);
-  border-radius: 40px;
+  border-radius:30px;
   border: 2px solid #8b7958d0;
   object-fit: cover;
   background:transparent; /* fallback mientras no hay imagen */
 }
 
 .hero-name {
-  font-size: 12px;
+  font-family: 'Almendra', serif;
+  font-size: 14px;
   font-weight: bold;
   background: #e9d8b7d7;
   border: 2px solid #8b6a3e;
@@ -129,14 +129,19 @@ body {
   width: 40px;
   height: 40px;
   padding: 4px;
-  border: 3px solid var(--gold-dark);
-  background: radial-gradient(circle at 40% 35%, #d6bc7f, #a78640ee);
-  color: #3a2800;
+  border: 2px solid ;
+  background: radial-gradient(circle at 40% 35%, #b1a998, #af7903fd);
+  color: #22160f;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.button-icon {
+  font-size: 18px;
+  font-weight: bold;
+  color: #22160fea;
 }
 
 .hero-ability-btn:hover:not(:disabled) {
@@ -174,7 +179,7 @@ body {
 
 .hand {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -187,7 +192,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   min-width: 110px;
 }
 
@@ -200,16 +205,16 @@ body {
   border-radius: 12px;
   padding: 8px 12px;
   text-align: center;
-  min-width: 90px;
-  gap: 4px;
- box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), inset 0 -1px 3px rgba(139, 105, 20, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);
+  min-width: 100px;
+  gap: 6px;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), inset 0 -1px 3px rgba(139, 105, 20, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .score-label {
-  font-size: 12px;
+  font-family: "Almendra", serif;
+  font-size: 14px;
   color: #22160f;
   padding: 4px 10px;
-  border-radius: 10px;
   font-weight: bold;
   text-transform: uppercase;
 
@@ -217,7 +222,8 @@ body {
 }
 
 .score-value {
-  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
   font-weight: bold;
   color: #22160f;
   height: auto;
@@ -227,11 +233,12 @@ body {
 }
 
 .score-icon {
-  font-size: 14px;
+  font-size: 16px;
   color: #22160f;
 }
 
 .scopa-count {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 16px;
   font-weight: bold;
   color: #22160f;
@@ -242,9 +249,6 @@ body {
   align-items: center;
   gap: 8px;
 }
-
-
-
 
 /* =============================================
    CARTAS
@@ -273,7 +277,7 @@ body {
 }
 
 .card.selected {
-  outline: 3px solid var(--gold);
+  outline: 2px solid #8b6a3ee5;
   outline-offset: 2px;
   transform: translateY(-10px);
   box-shadow: 0 8px 20px rgba(232, 200, 74, 0.4);
@@ -320,9 +324,8 @@ body {
   position: absolute;
   bottom: -10px;
   right: -10px;
-  background: var(--gold);
   color: #22160f;
-  background: #8b6a3e;
+  background: #9c7747;
   font-weight: bold;
   font-size: 14px;
   min-width: 26px;
@@ -334,6 +337,8 @@ body {
   z-index: 4;
   padding: 0 4px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 12px;
 }
 
 /* =============================================
@@ -346,8 +351,7 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 20px 40px;
-  border-top: 2px solid rgba(255,255,255,0.06);
-  border-bottom: 2px solid rgba(255,255,255,0.06);
+
 }
 
 .deck-wrapper {
@@ -472,4 +476,5 @@ body {
 .message {
   white-space: pre-line;
   line-height: 1.5;
+  
 }

@@ -48,14 +48,14 @@
 
     <!-- ============ ZONA MESA ============ -->
     <section class="table-zone">
-
+      
       <div class="deck-wrapper">
         <div class="pile deck-pile">
           <span class="pile-count" id="deckCount">40</span>
         </div>
       </div>
       <div id="tableCards" class="drop-area"></div>
-
+      <p id="messageBox" class="message"></p>
       <button id="restartButton" class="restart-btn">Nueva partida</button>
     </section>
 
@@ -85,7 +85,9 @@
           <div id="playerHand" class="hand"></div>
         </div>
       </div>
-      <button id="heroButton" class="hero-ability-btn hidden">⥃</button>
+      <button id="heroButton" class="hero-ability-btn hidden">
+        <span class ="button-icon">🂠</span>
+      </button>
 
       <div class="hero-panel">
         <img id="playerHeroImage" class="hero-image" src="" alt="Héroe jugador" />
