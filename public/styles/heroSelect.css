@@ -149,7 +149,7 @@ main {
   border: 2px solid #c6a35b;
   border-radius: 20px;
   padding: 8px 16px;
-  font-family: 'Cinzel', serif;
+  font-family: "Almendra", seri;
   font-size: 13px;
   cursor: pointer;
   z-index: 50;
@@ -179,9 +179,11 @@ main {
   border: 3px solid #8b6a3e;
   border-radius: 12px;
   padding: 32px 40px;
-  max-width: 520px;
+  max-width: 900px;
+  max-height: 900px;
   width: 90%;
   max-height: 80vh;
+  line-height: 1.5;
   overflow-y: auto;
   position: relative;
   color: #22160f;
@@ -190,7 +192,7 @@ main {
 }
 
 .modal-content h2 {
-  font-family: 'Cinzel', serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 20px;
   text-align: center;
   margin-bottom: 20px;
@@ -200,16 +202,16 @@ main {
 }
 
 .modal-content h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
   color: #4a2800;
   margin: 16px 0 6px;
 }
 
 .modal-content p,
 .modal-content li {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   color: #22160f;
 }
 
@@ -239,10 +241,10 @@ main {
   background: linear-gradient(180deg, #214978 0%, #153c6b 50%, #0f2a4d 100%);
   color: #c6a35b;
   border: 2px solid #c6a35b;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 14px 32px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 1rem;
+  font-family: "Almendra",serif;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
