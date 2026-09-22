@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
 /* Estilos generales */
 * {
   box-sizing: border-box;
@@ -57,8 +61,8 @@ main {
   max-height: 300px;
   padding: 25px 20px;
   background-color: #8b7958;
-  border: 1px solid #8b7958;
-  border-radius: 26px;
+  border: 2px solid #8b7958d0;
+  border-radius: 20px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 
@@ -118,18 +122,19 @@ main {
   margin-bottom: 20px;
   color: #ffff;
   
+  
 }
 
 /* Botón de inicio */
 #startButton {
   display: inline-block;
+  background: linear-gradient(180deg, #214978 0%, #153c6b 50%, #0f2a4d 100%);
+  color: #c6a35b;
+  border: 2px solid #c6a35b;
+  border-radius: 20px;
   padding: 14px 32px;
-  border-radius: 40px;
-  color: #EFE3C7;
-  background-color: #153C6B;
-
+  font-family: "Almendra", serif;
   font-size: 1rem;
-  border: 3px, solid #4A3527;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -138,12 +143,14 @@ main {
 }
 
 #startButton:hover:not(:disabled) {
-  background-color: #4A3527;
+  background: linear-gradient(180deg, #2a5a8f 0%, #1a4d80 50%, #132f5a 100%);
+  box-shadow: 0 0 0 2px #4a3527, 0 8px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 #startButton:disabled {
-  background-color:  #153c6b96;
-  color: #efe3c79c;
+  background: linear-gradient(180deg, #214978 0%, #153c6b 50%, #0f2a4d 100%);
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

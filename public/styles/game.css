@@ -1,8 +1,6 @@
-/* =============================================
-   ESCOBA CON HÉROES — game.css
-   Paleta: tapete verde oscuro / cartas crema /
-   acentos dorados / héroe destacado
-   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -34,7 +32,7 @@ body {
   background-position: center center;
   height: 100vh;  
   color: var(--text-light);
-  font-family: 'Georgia', serif;
+  font-family: 'Almendra', serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -434,7 +432,7 @@ body {
   color: #c6a35b;
   border: 2px solid #c6a35b;
   border-radius: 10px;
-  font-family: "Cinzel", serif;
+  font-family: "Almendra", serif;
   font-size: 14px;
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -444,7 +442,7 @@ body {
 }
 
 .restart-btn:hover {
- background: linear-gradient(180deg, #2a5a8f 0%, #1a4d80 50%, #132f5a 100%);
+  background: linear-gradient(180deg, #2a5a8f 0%, #1a4d80 50%, #132f5a 100%);
   box-shadow: 0 0 0 2px #4a3527, 0 8px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
   transform: translateY(-2px);
 }
