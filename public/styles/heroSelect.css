@@ -140,6 +140,99 @@ main {
   
 }
 
+.rules-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(20, 10, 0, 0.75);
+  color: #c6a35b;
+  border: 2px solid #c6a35b;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 50;
+  transition: background 0.2s;
+}
+
+.rules-btn:hover {
+  background: rgba(40, 20, 0, 0.9);
+}
+
+.modal {
+  position: fixed;
+  inset: 0; /* cubre toda la pantalla */
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #f2e8c9 0%, #e8d5a3 50%, #f2e8c9 100%);
+  border: 3px solid #8b6a3e;
+  border-radius: 12px;
+  padding: 32px 40px;
+  max-width: 520px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  color: #22160f;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.modal-content h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4a2800;
+  border-bottom: 1px solid #8b6a3e;
+  padding-bottom: 10px;
+}
+
+.modal-content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: #4a2800;
+  margin: 16px 0 6px;
+}
+
+.modal-content p,
+.modal-content li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #22160f;
+}
+
+.modal-content ul {
+  padding-left: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #4a2800;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-close:hover {
+  color: #8b6a3e;
+}
+
 /* Botón de inicio */
 #startButton {
   display: inline-block;

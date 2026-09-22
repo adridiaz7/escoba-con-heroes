@@ -15,6 +15,7 @@
   --pile-h: 150px;
   --hero-img-size: 110px;
   --text-light: #f0ead6;
+
 }
 
 html, body {
@@ -409,7 +410,7 @@ body {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 65vh; /* aproximadamente a la altura de la base de las cartas de la drop zone */
+  bottom: 30vh; /* aproximadamente a la altura de la base de las cartas de la drop zone */
   background: rgba(0, 0, 0, 0.75);
   color: var(--text-light);
   font-size: 16px;

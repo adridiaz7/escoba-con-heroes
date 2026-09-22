@@ -6,6 +6,35 @@
   <title>Escoba con héroes - Elige tu héroe</title>
   <link rel="stylesheet" href="public/styles/heroSelect.css" />
 </head>
+<div id="rulesModal" class="modal hidden">
+  <div class="modal-content">
+    <button id="closeRules" class="modal-close">✕</button>
+    <h2>Cómo se juega</h2>
+
+    <h3>Objetivo</h3>
+    <p>Tu objetivo es capturar cartas de la mesa sumando exactamente 15 puntos con la carta que juegas.</p>
+
+    <h3>Turno</h3>
+    <p>Cada turno, arrastra una carta de tu mano a la mesa. Si marcas cartas de la mesa antes de soltarla, intentarás capturarlas. 
+      Si la suma da 15, te las llevas. Si no marcas nada, tu carta se queda en la mesa.
+    </p>
+
+    <h3>Escoba</h3>
+    <p>Si al capturar dejas la mesa completamente vacía, haces una <strong>escoba</strong> — vale un punto extra.</p>
+
+    <h3>Puntuación final</h3>
+    <ul>
+      <li>1 punto — más cartas capturadas</li>
+      <li>1 punto — más cartas de oros</li>
+      <li>1 punto — el 7 de oros</li>
+      <li>1 punto por escoba</li>
+    </ul>
+
+    <h3>Valores de las cartas</h3>
+    <p>As=1, 2 al 7 según su número. Sota=8, Caballo=9, Rey=10 (para sumar 15).</p>
+  </div>
+</div>
+
 <body>
 
   <header>
@@ -47,6 +76,8 @@
       </article>
 
     </section>
+
+    <button id="rulesButton" class="rules-btn">📖 Reglas</button>
 
     <div id="startSection">
       <p id="heroSelectionMessage">Selecciona un héroe para empezar</p>

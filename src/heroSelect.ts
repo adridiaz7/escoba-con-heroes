@@ -30,3 +30,21 @@ startButton.addEventListener("click", () => {
   localStorage.setItem("playerHeroId", selectedHeroId);
   window.location.href = "game.html";
 });
+
+const rulesButton = document.getElementById("rulesButton");
+const rulesModal = document.getElementById("rulesModal");
+const closeRules = document.getElementById("closeRules");
+
+rulesButton?.addEventListener("click", () => {
+  rulesModal?.classList.remove("hidden");
+});
+
+closeRules?.addEventListener("click", () => {
+  rulesModal?.classList.add("hidden");
+});
+
+rulesModal?.addEventListener("click", (event) => {
+  if (event.target === rulesModal) {
+    rulesModal.classList.add("hidden");
+  }
+});
