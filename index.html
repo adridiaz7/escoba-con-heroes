@@ -48,10 +48,41 @@
 
     </section>
 
-    <div id="startSection">
-      <p id="heroSelectionMessage">Selecciona un héroe para empezar</p>
-      <button id="startButton" disabled>Iniciar partida</button>
-    </div>
+  <div id="startSection">
+  <p id="heroSelectionMessage">Selecciona un héroe para empezar</p>
+
+  <div class="start-buttons">
+    <button id="rulesButton" type="button">Cómo jugar</button>
+    <button id="startButton" disabled>Iniciar partida</button>
+  </div>
+</div>
+
+<section id="rulesModal" class="rules-modal hidden">
+  <div class="rules-content">
+    <button id="closeRulesButton" class="close-rules" type="button">×</button>
+
+    <h2>Cómo jugar</h2>
+
+    <p>
+      Escoba con héroes es una versión simplificada de la escoba tradicional.
+      Juegas contra la CPU usando una baraja española.
+    </p>
+
+    <ul>
+      <li>En cada turno juegas una carta de tu mano.</li>
+      <li>Debes combinarla con cartas de la mesa para sumar 15.</li>
+      <li>Si la suma es 15, capturas esas cartas.</li>
+      <li>Si no sumas 15, tu carta se queda en la mesa.</li>
+      <li>Si dejas la mesa vacía, consigues una escoba.</li>
+      <li>Al final gana quien tenga más puntos.</li>
+    </ul>
+
+    <p>
+      La puntuación tiene en cuenta cartas capturadas, oros, siete de oros,
+      escobas y bonificaciones de héroe.
+    </p>
+  </div>
+</section>
   </main>
 
   <script type="module" src="dist/heroSelect.js"></script>

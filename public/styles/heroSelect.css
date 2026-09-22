@@ -140,6 +140,90 @@ main {
   
 }
 
+.start-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+#rulesButton {
+  display: inline-block;
+  background: linear-gradient(180deg, #5a3a1f 0%, #3d2818 50%, #26180f 100%);
+  color: #e4c078;
+  border: 2px solid #c6a35b;
+  border-radius: 20px;
+  padding: 14px 32px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+#rulesButton:hover {
+  background: linear-gradient(180deg, #6d4827 0%, #4b321e 50%, #2f1e12 100%);
+  box-shadow: 0 0 0 2px #4a3527, 0 8px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.rules-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  padding: 24px;
+}
+
+.rules-modal.hidden {
+  display: none;
+}
+
+.rules-content {
+  position: relative;
+  max-width: 620px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: rgba(19, 15, 11, 0.96);
+  color: #f3e7c8;
+  border: 2px solid #c6a35b;
+  border-radius: 20px;
+  padding: 28px 34px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.6;
+}
+
+.rules-content h2 {
+  margin-top: 0;
+  color: #e4c078;
+  font-family: "Almendra";
+  font-size: 32px;
+  text-align: center;
+}
+
+.rules-content ul {
+  padding-left: 22px;
+}
+
+.rules-content li {
+  margin-bottom: 8px;
+}
+
+.close-rules {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: #e4c078;
+  font-size: 34px;
+  cursor: pointer;
+}
+
 /* Botón de inicio */
 #startButton {
   display: inline-block;

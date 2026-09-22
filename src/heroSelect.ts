@@ -3,6 +3,9 @@ let selectedHeroId: string | null = null;
 const heroCards = document.querySelectorAll<HTMLElement>(".hero-card");
 const startButton = document.getElementById("startButton") as HTMLButtonElement;
 const selectionMessage = document.getElementById("heroSelectionMessage") as HTMLElement;
+const rulesButton = document.getElementById("rulesButton") as HTMLButtonElement;
+const closeRulesButton = document.getElementById("closeRulesButton") as HTMLButtonElement;
+const rulesModal = document.getElementById("rulesModal") as HTMLElement;
 
 heroCards.forEach((card) => {
   card.addEventListener("click", () => {
@@ -29,4 +32,18 @@ startButton.addEventListener("click", () => {
 
   localStorage.setItem("playerHeroId", selectedHeroId);
   window.location.href = "game.html";
+});
+
+rulesButton.addEventListener("click", () => {
+  rulesModal.classList.remove("hidden");
+});
+
+closeRulesButton.addEventListener("click", () => {
+  rulesModal.classList.add("hidden");
+});
+
+rulesModal.addEventListener("click", (event) => {
+  if (event.target === rulesModal) {
+    rulesModal.classList.add("hidden");
+  }
 });
