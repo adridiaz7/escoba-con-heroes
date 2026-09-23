@@ -34,8 +34,6 @@ startButton.addEventListener("click", () => {
   window.location.href = "game.html";
 });
 
-const rulesButton = document.getElementById("rulesButton");
-const rulesModal = document.getElementById("rulesModal");
 const closeRules = document.getElementById("closeRules");
 
 rulesButton?.addEventListener("click", () => {
