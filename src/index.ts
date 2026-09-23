@@ -84,35 +84,37 @@ const getFinalScoreMessage = (): string => {
     return points === 1 ? "Sí (+1 punto)" : "No (+0 puntos)";
   };
 
-  let resultMessage = "";
+ let resultMessage = "";
 
-  if (playerScore > cpuScore) {
-    resultMessage = `Fin de la partida. Has ganado ${playerScore} - ${cpuScore}.`;
-  } else if (cpuScore > playerScore) {
-    resultMessage = `Fin de la partida. Ha ganado la CPU ${cpuScore} - ${playerScore}.`;
-  } else {
-    resultMessage = `Fin de la partida. Empate ${playerScore} - ${cpuScore}.`;
-  }
+if (playerScore > cpuScore) {
+  resultMessage = `🏆 Ganador: Jugador (${playerScore} - ${cpuScore})`;
+} else if (cpuScore > playerScore) {
+  resultMessage = `🏆 Ganador: CPU (${cpuScore} - ${playerScore})`;
+} else {
+  resultMessage = `🤝 Empate (${playerScore} - ${cpuScore})`;
+}
 
-  return `${resultMessage}
+return `🎉 FIN DE LA PARTIDA
+
+${resultMessage}
 
 DESGLOSE FINAL
 
-TÚ
-- Cartas capturadas: ${playerCardCount} (${formatPoints(playerCardsPoint)})
-- Oros capturados: ${playerGoldCount} (${formatPoints(playerGoldPoint)})
-- Siete de oros: ${formatSevenOfGold(playerSevenPoint)}
-- Escobas: ${playerScopaPoints} (${formatPoints(playerScopaPoints)})
-- Bonificación de héroe: ${formatPoints(playerHeroPoints)}
-- TOTAL: ${formatPoints(playerScore)}
+🧑 JUGADOR
+Cartas capturadas: ${playerCardCount} (${formatPoints(playerCardsPoint)})
+Oros capturados: ${playerGoldCount} (${formatPoints(playerGoldPoint)})
+Siete de oros: ${formatSevenOfGold(playerSevenPoint)}
+Escobas: ${playerScopaPoints} (${formatPoints(playerScopaPoints)})
+Bonificación de héroe: ${formatPoints(playerHeroPoints)}
+TOTAL: ${formatPoints(playerScore)}
 
-CPU
-- Cartas capturadas: ${cpuCardCount} (${formatPoints(cpuCardsPoint)})
-- Oros capturados: ${cpuGoldCount} (${formatPoints(cpuGoldPoint)})
-- Siete de oros: ${formatSevenOfGold(cpuSevenPoint)}
-- Escobas: ${cpuScopaPoints} (${formatPoints(cpuScopaPoints)})
-- Bonificación de héroe: ${formatPoints(cpuHeroPoints)}
-- TOTAL: ${formatPoints(cpuScore)}`;
+🤖 CPU
+Cartas capturadas: ${cpuCardCount} (${formatPoints(cpuCardsPoint)})
+Oros capturados: ${cpuGoldCount} (${formatPoints(cpuGoldPoint)})
+Siete de oros: ${formatSevenOfGold(cpuSevenPoint)}
+Escobas: ${cpuScopaPoints} (${formatPoints(cpuScopaPoints)})
+Bonificación de héroe: ${formatPoints(cpuHeroPoints)}
+TOTAL: ${formatPoints(cpuScore)}`;
 };
 
 const renderScreen = (): void => {
